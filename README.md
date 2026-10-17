@@ -3,6 +3,7 @@
 Minimal dark portfolio built with HTML, CSS and JavaScript.
 
 ## Structure
+
 - `index.html` — Home
 - `work.html` — Projects
 - `about.html` — About
@@ -13,6 +14,7 @@ Minimal dark portfolio built with HTML, CSS and JavaScript.
 - `js/` — Navigation and interactions
 
 ## Before publishing
+
 1. Replace placeholder photo.
 2. Replace project placeholders with real screenshots.
 3. Add real CV PDF.
@@ -21,6 +23,7 @@ Minimal dark portfolio built with HTML, CSS and JavaScript.
 6. Replace placeholder project descriptions with actual project evidence.
 
 ## Phase 8 — media checklist
+
 - Add professional profile photo to `images/profile/`
 - Add authentic screenshots to each project folder
 - Add short project demonstrations to `videos/projects/`
