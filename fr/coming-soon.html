@@ -1,23 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0B2545">
-  <meta name="description" content="Un projet actuellement en cours de développement.">
-  <title>Projet en cours — Moise Mugisha</title>
-
-  <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16.png">
-  <link rel="alternate icon" type="image/x-icon" href="../favicon/favicon.ico">
-  <link rel="manifest" href="../favicon/manifest.json">
-
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-  <link rel="stylesheet" href="../css/animations.css">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0B2545" name="theme-color"/>
+<meta content="Un projet actuellement en cours de développement." name="description"/>
+<title>Projet en cours — Moise Mugisha</title>
+<link href="../favicon/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../favicon/favicon.ico" rel="alternate icon" type="image/x-icon"/>
+<link href="../favicon/manifest.json" rel="manifest"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/responsive.css" rel="stylesheet"/>
+<link href="../css/animations.css" rel="stylesheet"/>
+<style>
     .coming-content {
       min-height: calc(100vh - 190px);
       display: flex;
@@ -55,83 +53,69 @@
         padding-bottom: 4rem;
       }
     }
+  
+    .coming-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-top: 2rem; }
+    .coming-actions .button, .coming-actions .coming-secondary { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; margin-top: 0; padding: 12px 18px; text-decoration: none; border-radius: 4px; font-size: .82rem; letter-spacing: .035em; transition: transform .2s ease, border-color .2s ease, background-color .2s ease; }
+    .coming-actions .coming-secondary { border: 1px solid var(--accent); color: var(--accent); background: transparent; }
+    .coming-actions a:hover { transform: translateY(-3px); }
+    .coming-actions a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    @media (max-width: 600px) { .coming-actions { flex-direction: column; } .coming-actions a { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { .coming-actions a { transition: none; } .coming-actions a:hover { transform: none; } }
   </style>
 </head>
-
 <body>
-  <header class="site-header" id="site-header">
-    <a class="logo" href="index.html" aria-label="Moise — Accueil">
-      <img src="../favicon/favicon.svg" alt=""
-           style="width:32px;height:32px;display:block;">
-    </a>
-
-    <nav class="desktop-nav" aria-label="Navigation principale">
-      <a href="work.html">PROJETS</a>
-      <a href="about.html">À PROPOS</a>
-      <a href="cv.html">CV</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-
-    <div class="language-switcher" aria-label="Choix de la langue">
-      <a href="../coming-soon.html" data-lang="en" lang="en">EN</a>
-      <span aria-hidden="true">/</span>
-      <a href="coming-soon.html" data-lang="fr" lang="fr">FR</a>
-    </div>
-
-    <button class="menu-toggle" type="button"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-            aria-controls="mobile-menu">☰</button>
-  </header>
-
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <button class="menu-close" type="button"
-            aria-label="Fermer le menu">×</button>
-
-    <nav aria-label="Navigation mobile">
-      <a href="work.html">PROJETS</a>
-      <a href="about.html">À PROPOS</a>
-      <a href="cv.html">CV</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-
-    <div class="mobile-language" aria-label="Choix de la langue">
-      <span>LANGUE</span>
-      <a href="../coming-soon.html" data-lang="en" lang="en">EN</a>
-      <a href="coming-soon.html" data-lang="fr" lang="fr">FR</a>
-    </div>
-  </div>
-
-  <main>
-    <section class="coming-content section">
-      <p class="eyebrow">STATUT DU PROJET / EN DÉVELOPPEMENT</p>
-
-      <h1 class="coming-title">
-        Projet en<br>cours<span>.</span>
-      </h1>
-
-      <p class="hero-description">
+<header class="site-header" id="site-header">
+<a aria-label="Moise — Accueil" class="logo" href="index.html">
+<img alt="" src="../favicon/favicon.svg" style="width:32px;height:32px;display:block;"/>
+</a>
+<nav aria-label="Navigation principale" class="desktop-nav">
+<a href="work.html">PROJETS</a>
+<a href="about.html">À PROPOS</a>
+<a href="cv.html">CV</a>
+<a href="contact.html">CONTACT</a>
+</nav>
+<div aria-label="Choix de la langue" class="language-switcher">
+<a data-lang="en" href="../coming-soon.html" lang="en">EN</a>
+<span aria-hidden="true">/</span>
+<a data-lang="fr" href="coming-soon.html" lang="fr">FR</a>
+</div>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu" class="menu-toggle" type="button">☰</button>
+</header>
+<div aria-hidden="true" class="mobile-menu" id="mobile-menu">
+<button aria-label="Fermer le menu" class="menu-close" type="button">×</button>
+<nav aria-label="Navigation mobile">
+<a href="work.html">PROJETS</a>
+<a href="about.html">À PROPOS</a>
+<a href="cv.html">CV</a>
+<a href="contact.html">CONTACT</a>
+</nav>
+<div aria-label="Choix de la langue" class="mobile-language">
+<span>LANGUE</span>
+<a data-lang="en" href="../coming-soon.html" lang="en">EN</a>
+<a data-lang="fr" href="coming-soon.html" lang="fr">FR</a>
+</div>
+</div>
+<main>
+<section class="coming-content section">
+<p class="eyebrow">STATUT DU PROJET / EN DÉVELOPPEMENT</p>
+<h1 class="coming-title">
+        Projet en<br/>cours<span>.</span>
+</h1>
+<p class="hero-description">
         Ce projet est actuellement en cours de développement.
         Je travaille sur sa réalisation, ses tests et sa documentation.
         Sa présentation complète sera disponible ici dès qu'il sera terminé.
       </p>
-
-      <div>
-        <a class="button button-primary" href="work.html">
-          RETOUR AUX PROJETS <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div>
-      <a class="logo" href="index.html">MOISE.</a>
-      <p>Étudiant en informatique &amp; développeur</p>
-    </div>
-    <p>© 2026 MUGISHA MOISE</p>
-  </footer>
-
-  <script src="../js/main.js"></script>
+<div class="coming-actions"><a class="button coming-secondary" href="index.html">ACCUEIL</a><a class="button coming-secondary" href="work.html">TOUS LES PROJETS</a><a class="button button-primary" href="projects/project-04.html">PROJET SUIVANT : L’HÉRITAGE DE L’ALCHIMISTE</a></div>
+</section>
+</main>
+<footer class="site-footer">
+<div>
+<a class="logo" href="index.html">MOISE.</a>
+<p>Étudiant en informatique &amp; développeur</p>
+</div>
+<p>© 2026 MUGISHA MOISE</p>
+</footer>
+<script src="../js/main.js"></script>
 </body>
 </html>

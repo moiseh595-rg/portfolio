@@ -767,3 +767,106 @@ body {
 [data-lightbox] { cursor: zoom-in; }
 [data-lightbox]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 .contact-github-heading { display: block; font-size: 2em; font-weight: bold; }
+
+
+/* Escape-game case study — distinct editorial/cinematic layout */
+.alchemist-case { --alchemy-gold:#e2bd78; --alchemy-paper:#efe0c2; }
+.alchemy-kicker { display:flex;justify-content:space-between;gap:1rem;margin:4rem 0 1rem; font-size:.78rem;letter-spacing:.14em; }
+.alchemy-hero { min-height:clamp(420px,62vw,690px);display:flex;align-items:stretch;background:linear-gradient(90deg,rgba(13,13,18,.83),rgba(13,13,18,.08)),url('../images/projects/escape-game/banner.jpg') center/cover no-repeat;overflow:hidden; }
+.alchemy-hero-shade { display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:1.4rem;padding:clamp(1.5rem,6vw,5rem);color:#fff;max-width:920px; }
+.alchemy-hero h1 {font-size:clamp(2.5rem,6.4vw,6.5rem);line-height:.97;letter-spacing:-.055em;overflow-wrap:anywhere;}
+.alchemy-eyebrow {font-size:.8rem;letter-spacing:.2em;color:var(--alchemy-gold);font-weight:700;}
+.alchemy-hero-shade>p:not(.alchemy-eyebrow){font-size:clamp(1rem,1.7vw,1.35rem);max-width:550px;color:#f5e8d4;}
+.alchemy-cta {display:inline-flex;justify-content:space-between;gap:2rem;padding:1rem 1.3rem;background:var(--alchemy-gold);color:#1b1713;text-decoration:none;font-weight:700;font-size:.83rem;letter-spacing:.08em;}
+.alchemy-cta:hover{background:#fff;color:#1b1713;}
+.alchemy-facts {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;padding:2rem 0;border-bottom:1px solid var(--border,rgba(127,127,127,.25));}
+.alchemy-facts>div{display:flex;flex-direction:column;gap:.5rem;min-width:0;}
+.alchemy-facts small{letter-spacing:.13em;opacity:.7;font-size:.7rem;}.alchemy-facts strong{font-size:.95rem;overflow-wrap:anywhere;}
+.alchemy-intro,.alchemy-contribution,.alchemy-links{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(2rem,7vw,7rem);margin:clamp(4rem,9vw,9rem) 0;}
+.alchemy-intro h2,.alchemy-contribution h2,.alchemy-links h2,.alchemy-chapter-heading h2{font-size:clamp(2rem,4.5vw,4.5rem);line-height:1.1;letter-spacing:-.045em;margin-top:1.5rem;}
+.alchemy-intro p,.alchemy-contribution p{font-size:1.05rem;line-height:1.85;margin-bottom:1.5rem;}
+.alchemy-chapter-heading{margin:6rem 0 2.5rem;}
+.alchemy-timeline{display:grid;gap:1px;background:rgba(127,127,127,.2);border:1px solid rgba(127,127,127,.2);}
+.alchemy-chapter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--bg,#0B2545);min-width:0;}
+.alchemy-chapter:nth-child(even) img{order:2;}
+.alchemy-chapter img{display:block;width:100%;height:100%;max-height:390px;min-height:260px;object-fit:cover;}
+.alchemy-chapter>div{padding:clamp(1.5rem,4vw,4rem);display:flex;flex-direction:column;justify-content:center;gap:1rem;}
+.alchemy-chapter span{font-size:.76rem;letter-spacing:.16em;color:var(--accent,#8795ff);font-weight:700;}
+.alchemy-chapter h3{font-size:clamp(1.4rem,2.7vw,2.6rem);line-height:1.18;}
+.alchemy-chapter p{line-height:1.7;opacity:.85;}
+.alchemy-contribution{padding:clamp(2rem,5vw,5rem);background:rgba(135,149,255,.06);border:1px solid rgba(135,149,255,.17);}
+.alchemy-links>div:last-child{display:flex;flex-direction:column;}
+.alchemy-links a{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(127,127,127,.3);padding:1.25rem 0;font-size:.85rem;font-weight:700;letter-spacing:.07em;text-decoration:none;}
+.alchemy-links a:hover{color:var(--accent,#8795ff);}
+.alchemy-project-card .project-image{background:#1a1715;}
+.alchemy-project-card .project-image img{display:block;width:100%;height:100%;object-fit:cover;}
+@media(max-width:760px){.alchemy-kicker{margin-top:2.5rem;flex-wrap:wrap}.alchemy-facts{grid-template-columns:repeat(2,minmax(0,1fr));}.alchemy-intro,.alchemy-contribution,.alchemy-links{grid-template-columns:1fr;gap:1.5rem;margin:4rem 0;}.alchemy-chapter{grid-template-columns:1fr;}.alchemy-chapter:nth-child(even) img{order:0;}.alchemy-chapter img{height:auto;max-height:none;min-height:0;aspect-ratio:16/10;}.alchemy-chapter>div{padding:1.5rem 1.25rem 2rem;}.alchemy-chapter-heading{margin:4rem 0 2rem;}.alchemy-hero{min-height:460px;}.alchemy-hero-shade{padding:1.5rem;}.alchemy-hero h1{font-size:clamp(2.2rem,10vw,4.5rem);}}
+@media(max-width:390px){.alchemy-facts{grid-template-columns:1fr 1fr;}.alchemy-hero{min-height:400px;}.alchemy-hero h1{font-size:2.15rem;}}
+
+/* Escape game project: discreet collaborator privacy notice */
+.alchemy-privacy-note { margin: 1.5rem 0; font-size: .85rem; opacity: .7; line-height: 1.6; }
+
+/* Escape-game artwork: responsive, accessible hover feedback */
+.alchemy-chapter img, .alchemy-hero img, .alchemy-project-card .project-image img { transition: transform .45s ease, filter .45s ease; }
+.alchemy-chapter { overflow:hidden; }
+@media (hover:hover) and (pointer:fine) {
+  .alchemy-chapter:hover img { transform:scale(1.035); filter:brightness(1.08); }
+  .alchemy-project-card:hover .project-image img { transform:scale(1.045); filter:brightness(1.08); }
+}
+@media (prefers-reduced-motion:reduce) { .alchemy-chapter img, .alchemy-hero img, .alchemy-project-card .project-image img { transition:none; } }
+
+
+/* Unified portfolio project previews — Home and Work (EN / FR).
+   Scoped to listing pages: individual case studies retain their own design. */
+.work-preview .project-image,
+.work-page .project-image,
+.project-listing .project-image {
+  position: relative;
+  isolation: isolate;
+}
+body:has(.work-preview) .project-card .project-image,
+body:has(.work-preview) .project-card .media-frame,
+body:has(.work-page) .project-card .project-image,
+body:has(.work-page) .project-card .media-frame {
+  transition: transform .45s cubic-bezier(.2,.7,.2,1),
+              box-shadow .45s ease, border-color .3s ease;
+}
+/* The pages' project cards share the same markup, so apply the effect
+   to their images without requiring additional HTML classes. */
+.project-card .project-image img {
+  display: block;
+  max-width: 100%;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .45s ease;
+  cursor: default;
+}
+.project-card .project-image,
+.project-card .media-frame { cursor: default; }
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-image {
+    transform: translateY(-6px) scale(1.012);
+    box-shadow: 0 20px 48px rgba(0,0,0,.22);
+    border-color: rgba(135,149,255,.4);
+  }
+  .project-card:hover .project-image img {
+    transform: scale(1.045);
+    filter: brightness(1.07);
+  }
+  /* Prevent the old media-frame hover effect from doubling the zoom. */
+  .project-card .media-frame:hover img { transform: none; }
+  .project-card:hover .media-frame img { transform: scale(1.045); }
+}
+/* No magnifying-glass cursor on portfolio project previews. */
+.project-card .media-frame img,
+.project-card .project-image img,
+.project-card [data-lightbox] { cursor: default; }
+@media (prefers-reduced-motion: reduce) {
+  .project-card .project-image,
+  .project-card .media-frame,
+  .project-card .project-image img { transition: none !important; }
+  .project-card:hover .project-image,
+  .project-card:hover .project-image img,
+  .project-card:hover .media-frame img { transform: none !important; }
+}
+/* Allow the lifted screenshot to extend beyond its old clipping frame. */
+.project-card .media-frame { overflow: visible; }
+.project-card .project-image { overflow: hidden; }
