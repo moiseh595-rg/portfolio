@@ -2,11 +2,11 @@
   box-sizing: border-box;
 }
 :root {
-  --background: #17212B;
-  --surface: #22313D;
-  --surface-2: #293A48;
-  --text: #F3F4F2;
-  --muted: #B8C6CC;
+  --background:#0B2545;
+  --surface:  #123354;
+  --surface-2:  #1A4266;
+  --text:  #F3F4F2;
+  --muted:  #B8C6CC;
   --accent: #8795ff;
   --border: rgba(184, 198, 204, 0.18);
   --max-width: 1280px;
@@ -39,7 +39,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(23, 33, 43, 0.88);
+background: rgba(11, 37, 69, 0.88);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
   transition: 0.25s ease;
