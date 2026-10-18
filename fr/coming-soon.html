@@ -1,21 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0B2545">
   <meta name="description" content="Un projet actuellement en cours de développement.">
   <title>Projet en cours — Moise Mugisha</title>
 
   <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16.png">
+  <link rel="alternate icon" type="image/x-icon" href="../favicon/favicon.ico">
+  <link rel="manifest" href="../favicon/manifest.json">
+
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
-</head>
-<body>
+  <link rel="stylesheet" href="../css/animations.css">
 
-  <header class="site-header">
-    <a class="logo" href="index.html" aria-label="Accueil">M.</a>
+  <style>
+    .coming-content {
+      min-height: calc(100vh - 190px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+    }
+
+    .coming-title {
+      font-size: clamp(3rem, 9vw, 8rem);
+      line-height: 1.05;
+      letter-spacing: -.065em;
+      margin: 1.5rem 0;
+      overflow-wrap: anywhere;
+    }
+
+    .coming-title span {
+      color: var(--accent);
+    }
+
+    .coming-content .hero-description {
+      max-width: 560px;
+      font-size: 1.05rem;
+    }
+
+    .coming-content .button {
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .coming-content {
+        min-height: calc(100vh - 150px);
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <a class="logo" href="index.html" aria-label="Moise — Accueil">
+      <img src="../favicon/favicon.svg" alt=""
+           style="width:32px;height:32px;display:block;">
+    </a>
 
     <nav class="desktop-nav" aria-label="Navigation principale">
       <a href="work.html">PROJETS</a>
@@ -24,17 +72,21 @@
       <a href="contact.html">CONTACT</a>
     </nav>
 
-    <div class="language-switcher">
-      <a href="../coming-soon.html">EN</a>
-      <span>/</span>
-      <a href="coming-soon.html" aria-current="true">FR</a>
+    <div class="language-switcher" aria-label="Choix de la langue">
+      <a href="../coming-soon.html" data-lang="en" lang="en">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="coming-soon.html" data-lang="fr" lang="fr">FR</a>
     </div>
 
-    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu">☰</button>
   </header>
 
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="menu-close" type="button" aria-label="Fermer le menu">×</button>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="menu-close" type="button"
+            aria-label="Fermer le menu">×</button>
 
     <nav aria-label="Navigation mobile">
       <a href="work.html">PROJETS</a>
@@ -43,28 +95,28 @@
       <a href="contact.html">CONTACT</a>
     </nav>
 
-    <div class="mobile-language">
+    <div class="mobile-language" aria-label="Choix de la langue">
       <span>LANGUE</span>
-      <a href="../coming-soon.html">EN</a>
-      <a href="coming-soon.html">FR</a>
+      <a href="../coming-soon.html" data-lang="en" lang="en">EN</a>
+      <a href="coming-soon.html" data-lang="fr" lang="fr">FR</a>
     </div>
   </div>
 
   <main>
-    <section class="section" style="min-height: calc(100vh - 76px); display: flex; flex-direction: column; justify-content: center;">
+    <section class="coming-content section">
       <p class="eyebrow">STATUT DU PROJET / EN DÉVELOPPEMENT</p>
 
-      <h1 style="font-size: clamp(3rem, 9vw, 8rem); line-height: 1; letter-spacing: -0.07em; margin: 1.5rem 0;">
-        Projet en<br>cours<span style="color: var(--accent);">.</span>
+      <h1 class="coming-title">
+        Projet en<br>cours<span>.</span>
       </h1>
 
-      <p class="hero-description" style="max-width: 560px; font-size: 1.05rem;">
+      <p class="hero-description">
         Ce projet est actuellement en cours de développement.
         Je travaille sur sa réalisation, ses tests et sa documentation.
         Sa présentation complète sera disponible ici dès qu'il sera terminé.
       </p>
 
-      <div style="margin-top: 1.5rem;">
+      <div>
         <a class="button button-primary" href="work.html">
           RETOUR AUX PROJETS <span aria-hidden="true">→</span>
         </a>
@@ -73,12 +125,11 @@
   </main>
 
   <footer class="site-footer">
-    <p>Moise Mugisha — Portfolio Développeur</p>
-    <div class="footer-links">
-      <a href="work.html">PROJETS</a>
-      <a href="contact.html">CONTACT</a>
+    <div>
+      <a class="logo" href="index.html">MOISE.</a>
+      <p>Étudiant en informatique &amp; développeur</p>
     </div>
-    <p class="copyright">© 2026 Moise Mugisha</p>
+    <p>© 2026 MOISE MUGISHA</p>
   </footer>
 
   <script src="../js/main.js"></script>

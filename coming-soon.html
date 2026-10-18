@@ -1,40 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0B2545">
   <meta name="description" content="A project currently under development.">
   <title>Work in Progress — Moise Mugisha</title>
 
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
+  <link rel="alternate icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="manifest" href="favicon/manifest.json">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .coming-content {
+      min-height: calc(100vh - 190px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+    }
+
+    .coming-title {
+      font-size: clamp(3rem, 9vw, 8rem);
+      line-height: 1.05;
+      letter-spacing: -.065em;
+      margin: 1.5rem 0;
+      overflow-wrap: anywhere;
+    }
+
+    .coming-title span {
+      color: var(--accent);
+    }
+
+    .coming-content .hero-description {
+      max-width: 560px;
+      font-size: 1.05rem;
+    }
+
+    .coming-content .button {
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .coming-content {
+        min-height: calc(100vh - 150px);
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="site-header" id="site-header">
+    <a class="logo" href="index.html" aria-label="Moise — Home">
+      <img src="favicon/favicon.svg" alt=""
+           style="width:32px;height:32px;display:block;">
+    </a>
 
-  <header class="site-header">
-    <a class="logo" href="index.html" aria-label="Home">M.</a>
-
-    <nav class="desktop-nav" aria-label="Main navigation">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="work.html">WORK</a>
       <a href="about.html">ABOUT</a>
       <a href="cv.html">CV</a>
       <a href="contact.html">CONTACT</a>
     </nav>
 
-    <div class="language-switcher">
-      <a href="coming-soon.html" aria-current="true">EN</a>
-      <span>/</span>
-      <a href="fr/coming-soon.html">FR</a>
+    <div class="language-switcher" aria-label="Language selection">
+      <a href="coming-soon.html" data-lang="en" lang="en">EN</a>
+      <span aria-hidden="true">/</span>
+      <a href="fr/coming-soon.html" data-lang="fr" lang="fr">FR</a>
     </div>
 
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu">☰</button>
   </header>
 
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="menu-close" type="button" aria-label="Close menu">×</button>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="menu-close" type="button"
+            aria-label="Close menu">×</button>
 
     <nav aria-label="Mobile navigation">
       <a href="work.html">WORK</a>
@@ -43,28 +95,28 @@
       <a href="contact.html">CONTACT</a>
     </nav>
 
-    <div class="mobile-language">
+    <div class="mobile-language" aria-label="Language selection">
       <span>LANGUAGE</span>
-      <a href="coming-soon.html">EN</a>
-      <a href="fr/coming-soon.html">FR</a>
+      <a href="coming-soon.html" data-lang="en" lang="en">EN</a>
+      <a href="fr/coming-soon.html" data-lang="fr" lang="fr">FR</a>
     </div>
   </div>
 
   <main>
-    <section class="section" style="min-height: calc(100vh - 76px); display: flex; flex-direction: column; justify-content: center;">
+    <section class="coming-content section">
       <p class="eyebrow">PROJECT STATUS / IN DEVELOPMENT</p>
 
-      <h1 style="font-size: clamp(3rem, 9vw, 8rem); line-height: 1; letter-spacing: -0.07em; margin: 1.5rem 0;">
-        Work in<br>Progress<span style="color: var(--accent);">.</span>
+      <h1 class="coming-title">
+        Work in<br>Progress<span>.</span>
       </h1>
 
-      <p class="hero-description" style="max-width: 560px; font-size: 1.05rem;">
+      <p class="hero-description">
         This project is currently under development.
         I'm working on building, testing, and documenting it.
         The full project will be available here once it's ready.
       </p>
 
-      <div style="margin-top: 1.5rem;">
+      <div>
         <a class="button button-primary" href="work.html">
           BACK TO PROJECTS <span aria-hidden="true">→</span>
         </a>
@@ -73,12 +125,11 @@
   </main>
 
   <footer class="site-footer">
-    <p>Moise Mugisha — Developer Portfolio</p>
-    <div class="footer-links">
-      <a href="work.html">WORK</a>
-      <a href="contact.html">CONTACT</a>
+    <div>
+      <a class="logo" href="index.html">MOISE.</a>
+      <p>Computer Science Student &amp; Developer</p>
     </div>
-    <p class="copyright">© 2026 Moise Mugisha</p>
+    <p>© 2026 MOISE MUGISHA</p>
   </footer>
 
   <script src="js/main.js"></script>
