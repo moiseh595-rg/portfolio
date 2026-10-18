@@ -118,3 +118,16 @@ document.querySelectorAll("[data-lang]").forEach((link) => {
     link.setAttribute("aria-current", "true");
   }
 });
+
+
+// Remember an explicit language choice from either language switcher.
+// The preference is applied only when opening the main portfolio homepage.
+document.querySelectorAll('a[data-lang="en"], a[data-lang="fr"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    try {
+      localStorage.setItem("portfolio-language", link.dataset.lang);
+    } catch (error) {
+      // Language links still work when browser storage is unavailable.
+    }
+  });
+});

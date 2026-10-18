@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+  <script>
+    // Auto-select French on the main homepage, while respecting manual choices.
+    (function () {
+      var preferred = null;
+      try { preferred = localStorage.getItem("portfolio-language"); } catch (error) {}
+      var browserFrench = (navigator.languages || [navigator.language || "en"])
+        .some(function (language) { return /^fr(?:-|$)/i.test(language); });
+      if (preferred === "fr" || (!preferred && browserFrench)) {
+        window.location.replace("fr/index.html" + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
+
   <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
