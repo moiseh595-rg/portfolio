@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="#0B2545" name="theme-color"/>
-<meta content="Java Rubik’s Cube project preview: a 3×3 cube model, Java methods, and planned solving algorithms." name="description"/>
+<meta content="Rubik’s Cube Java project: 3×3 cube modelling, face rotations, move sequences, state-based search and an interactive 3D demonstration." name="description"/>
 <title>Rubik’s Cube — Java Project | Moise MUGISHA</title>
 <link href="../favicon/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="../favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -131,8 +129,68 @@
 .rubik-case .rubik-goal-card p {font-size:.9rem}
 .rubik-case .rubik-status {display:inline-block}
 @media(max-width:600px){.rubik-case .rubik-hero-placeholder{min-height:300px}.rubik-case .rubik-hero-placeholder::after{font-size:.5rem;left:.8rem}}
+
+/* Project 03 demonstration cards: stable heading and responsive composition. */
+.rubik-case .rubik-shot-placeholder{position:relative;min-height:220px;height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem;overflow:hidden}
+.rubik-case .rubik-shot-placeholder .rubik-preview-label{position:static;display:block;max-width:100%;width:100%;font-size:clamp(.57rem,1vw,.72rem);line-height:1.5;letter-spacing:.09em;text-align:center;overflow-wrap:anywhere;flex:none;color:#aeb9e7}
+.rubik-case .rubik-shot-placeholder .rubik-preview-visual{flex:1 1 auto;height:auto;min-height:90px;width:100%;min-width:0;display:flex;justify-content:center;align-items:center}
+.rubik-case .rubik-shot-placeholder strong{display:block;text-align:center;line-height:1.5;max-width:100%;overflow-wrap:anywhere;flex:none}
+.rubik-case .rubik-shot-placeholder .rubik-preview-moves{max-width:100%;flex-wrap:wrap;justify-content:center;gap:clamp(.2rem,.8vw,.7rem)}
+.rubik-case .rubik-shot-placeholder .rubik-preview-moves b{padding:.3rem .45rem}
+.rubik-case .rubik-shot-placeholder .rubik-preview-result{max-width:100%;overflow-wrap:anywhere;font-size:clamp(.65rem,.85vw,.76rem)}
+@media (prefers-reduced-motion:no-preference){.rubik-case .rubik-shot-placeholder .rubik-preview-visual{transition:transform .25s ease,filter .25s ease}.rubik-case .rubik-shot:hover .rubik-preview-visual{transform:translateY(-4px);filter:brightness(1.12)}.rubik-case .rubik-shot:hover .rubik-mini-cube{transform:rotate(0deg)}.rubik-case .rubik-mini-cube{transition:transform .3s ease}}
+/* Playable six-face cube net. */
+.rubik-case .play-cube{border:1px solid var(--rubik-line);background:linear-gradient(135deg,#0b182a,#101e35);padding:clamp(1rem,3vw,2rem);margin-top:2rem;color:#e6ecff}
+.rubik-case .play-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,270px);gap:clamp(1rem,3vw,2.5rem);align-items:center}
+.rubik-case .play-net{--tile:clamp(11px,2.05vw,24px);--gap:3px;display:grid;grid-template-columns:repeat(4,max-content);grid-template-rows:repeat(3,max-content);gap:clamp(3px,.65vw,8px);justify-content:center;min-width:0}
+.rubik-case .play-face{display:grid;grid-template-columns:repeat(3,var(--tile));grid-template-rows:repeat(3,var(--tile));gap:var(--gap);padding:4px;border-radius:5px;background:#07111e;border:1px solid rgba(255,255,255,.16);position:relative}
+.rubik-case .play-face[data-face="U"]{grid-column:2;grid-row:1}.rubik-case .play-face[data-face="L"]{grid-column:1;grid-row:2}.rubik-case .play-face[data-face="F"]{grid-column:2;grid-row:2}.rubik-case .play-face[data-face="R"]{grid-column:3;grid-row:2}.rubik-case .play-face[data-face="B"]{grid-column:4;grid-row:2}.rubik-case .play-face[data-face="D"]{grid-column:2;grid-row:3}
+.rubik-case .play-sticker{display:block;border-radius:2px;border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 2px rgba(255,255,255,.12)}
+.rubik-case .play-face-name{position:absolute;top:-.8rem;left:50%;transform:translateX(-50%);font-size:.52rem;letter-spacing:.04em;color:#bbc6e9;pointer-events:none}
+.rubik-case .play-controls{display:flex;flex-direction:column;gap:1rem;min-width:0}
+.rubik-case .play-controls h3{margin:0;font-size:1.05rem;color:#f1f4ff}
+.rubik-case .play-controls p{margin:0;font-size:.85rem;line-height:1.6;color:#b9c7e5}
+.rubik-case .play-moves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.rubik-case .play-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.rubik-case .play-controls button{background:rgba(135,149,255,.07);color:#eef2ff;border:1px solid rgba(135,149,255,.42);border-radius:5px;min-height:42px;padding:.6rem .35rem;font-family:inherit;font-weight:600;font-size:.82rem;line-height:1.2;cursor:pointer;transition:background .15s,border-color .15s}
+.rubik-case .play-controls button:hover,.rubik-case .play-controls button:focus-visible{background:rgba(135,149,255,.3);border-color:#b6c0ff;outline-offset:3px}
+.rubik-case .play-controls button:disabled{opacity:.42;cursor:not-allowed}
+.rubik-case .play-controls button[data-play-action="scramble"]{background:#8795ff;color:#0b2545}
+.rubik-case .play-state{min-height:2.4em;color:#a9f2c8!important;font-weight:600}
+.rubik-case .play-help{font-size:.76rem!important}
+@media(max-width:900px){.rubik-case .play-layout{grid-template-columns:1fr}.rubik-case .play-net{--tile:clamp(13px,4vw,27px)}.rubik-case .play-controls{max-width:480px;width:100%;margin:0 auto}}
+@media(max-width:420px){.rubik-case .play-net{--tile:clamp(10px,3.3vw,14px);--gap:2px;gap:3px}.rubik-case .play-face{padding:3px}.rubik-case .play-controls button{min-height:40px}}
+
 </style>
-</head>
+<style id="rubik-lab-style">.rubik-lab{display:flex;align-items:center;gap:clamp(1.5rem,5vw,4rem);flex-wrap:wrap}.rubik-lab-face{display:grid;grid-template-columns:repeat(3,minmax(46px,76px));gap:7px}.rubik-lab-face span{display:grid;place-items:center;aspect-ratio:1;background:#8795ff;color:#0b2545;font-weight:800;border-radius:7px;font-size:1.3rem;border:2px solid #0b2545}.rubik-lab-controls{display:flex;flex-direction:column;gap:10px;flex:1;min-width:190px}.rubik-lab-controls button{background:transparent;color:inherit;border:1px solid currentColor;padding:12px 15px;border-radius:6px;text-align:left;font:inherit;cursor:pointer}.rubik-lab-controls button:hover,.rubik-lab-controls button:focus-visible{background:#8795ff;color:#0b2545}.rubik-lab-state{font-size:.85rem;opacity:.8}</style><style id="rubik-3d-style">
+/* Demonstration cards: centred independently of other site grids. */
+.rubik-case #demonstration>.rubik-grid{width:100%;max-width:100%;margin-inline:auto;box-sizing:border-box;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px);justify-items:stretch;align-items:stretch}
+.rubik-case #demonstration .rubik-shot{min-width:0;width:100%;max-width:100%;margin:0;box-sizing:border-box;justify-self:center;display:flex;flex-direction:column}
+.rubik-case #demonstration .rubik-shot-placeholder{width:100%;max-width:100%;min-width:0;box-sizing:border-box;flex:1}
+.rubik-case #demonstration .rubik-shot figcaption{width:100%;max-width:100%;box-sizing:border-box;text-align:center;overflow-wrap:anywhere}
+@media(max-width:850px){.rubik-case #demonstration>.rubik-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.rubik-case #demonstration>.rubik-grid{grid-template-columns:minmax(0,1fr);gap:18px}}
+/* Six genuine 3x3 faces rendered as a single 3D cube. */
+.rubik-case .play-layout{grid-template-columns:minmax(0,1fr) minmax(210px,280px)}
+.rubik-case .cube3d-stage{width:100%;min-width:0;min-height:330px;display:grid;place-items:center;perspective:850px;touch-action:none;cursor:grab;user-select:none;overflow:hidden;border-radius:8px;background:radial-gradient(circle,rgba(135,149,255,.10),transparent 66%)}
+.rubik-case .cube3d-stage:active{cursor:grabbing}
+.rubik-case .cube3d-object{--cube-size:180px;position:relative;width:var(--cube-size);height:var(--cube-size);transform-style:preserve-3d;transform:rotateX(-27deg) rotateY(-35deg);transition:transform .16s ease-out;pointer-events:none}
+.rubik-case .cube3d-face{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:4px;padding:6px;box-sizing:border-box;background:#08101d;border:2px solid #070d18;border-radius:6px;backface-visibility:visible;pointer-events:auto}
+.rubik-case .cube3d-face[data-face="F"]{transform:translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face[data-face="B"]{transform:rotateY(180deg) translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face[data-face="R"]{transform:rotateY(90deg) translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face[data-face="L"]{transform:rotateY(-90deg) translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face[data-face="U"]{transform:rotateX(90deg) translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face[data-face="D"]{transform:rotateX(-90deg) translateZ(calc(var(--cube-size)/2))}
+.rubik-case .cube3d-face .play-sticker{border-radius:4px;border:1px solid rgba(0,0,0,.3);box-shadow:inset 0 2px 3px rgba(255,255,255,.18),inset 0 -2px 3px rgba(0,0,0,.1)}
+.rubik-case .cube3d-hint{text-align:center;color:#bac8e8;font-size:.78rem;margin:.5rem 0 0}
+.rubik-case .cube3d-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.rubik-case .cube3d-actions button{font:inherit;font-size:.75rem;padding:9px 12px;background:transparent;border:1px solid rgba(135,149,255,.45);border-radius:5px;color:#eaf0ff;cursor:pointer}
+.rubik-case .cube3d-actions button:hover{background:rgba(135,149,255,.18)}
+@media(max-width:760px){.rubik-case .play-layout{grid-template-columns:minmax(0,1fr)}.rubik-case .cube3d-stage{min-height:285px}.rubik-case .cube3d-object{--cube-size:160px}}
+@media(max-width:380px){.rubik-case .cube3d-object{--cube-size:145px}.rubik-case .cube3d-stage{min-height:255px}}
+@media(prefers-reduced-motion:reduce){.rubik-case .cube3d-object{transition:none}}
+</style></head>
 <body>
 <header class="site-header" id="site-header">
 <a aria-label="Moise — Home" class="logo" href="../index.html"><img alt="" src="../favicon/favicon.svg" style="width:32px;height:32px;display:block;"/></a>
@@ -152,11 +210,11 @@
 <div class="section-label">03 / JAVA DEVELOPMENT · 2026</div>
 <h1 class="hero-subtitle rubik-title">RUBIK’S CUBE</h1>
 <h2 class="rubik-subtitle">SIMULATOR &amp; SOLVER</h2>
-<p class="rubik-lead">A Java project exploring how a 3×3 Rubik’s Cube can be represented, manipulated and eventually solved through code.</p>
-<div class="rubik-tags"><span>JAVA 21</span><span>ALGORITHMS</span><span>int[][][]</span><span>3×3 RUBIK’S CUBE</span></div>
-<p class="rubik-status">● IN DEVELOPMENT · PORTFOLIO PREVIEW</p>
+<p class="rubik-lead">A Rubik’s Cube project exploring Java cube modelling, face rotations, move sequences and state-based solving, with an interactive 3D demonstration.</p>
+<div class="rubik-tags"><span>JAVA 21</span><span>ALGORITHMS</span><span>3×3 MODEL</span><span>3×3 RUBIK’S CUBE</span></div>
+<p class="rubik-status">● JAVA · CUBE LOGIC · ALGORITHMS</p>
 </div>
-<!-- HERO IMAGE: replace this block with a real project image when available. -->
+
 <div class="media-frame" style="margin-top:4rem"><div class="rubik-hero-placeholder"><svg aria-label="Illustration of a three-dimensional Rubik's Cube" class="rubik-cover" role="img" viewbox="0 0 440 320">
 <defs><lineargradient id="cubeTop" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#b8c6ff"></stop><stop offset="1" stop-color="#7589de"></stop></lineargradient><lineargradient id="cubeLeft" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#748ee6"></stop><stop offset="1" stop-color="#304b96"></stop></lineargradient><lineargradient id="cubeRight" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#3e60b4"></stop><stop offset="1" stop-color="#182f68"></stop></lineargradient></defs>
 <g stroke="#0b1830" stroke-linejoin="round" stroke-width="4">
@@ -166,10 +224,10 @@
 <path d="M176 45L308 114M132 68L264 137M264 45L132 114M308 68L176 137" fill="none" stroke="#17284c" stroke-width="3"></path>
 <path d="M88 136L220 207M88 182L220 254M132 114V252M176 137V276" fill="none" stroke="#17284c" stroke-width="3"></path>
 <path d="M220 207L352 136M220 254L352 182M264 137V276M308 114V252" fill="none" stroke="#17284c" stroke-width="3"></path>
-</g></svg><p class="rubik-cover-note">Concept illustration · not an application screenshot</p></div></div>
-<section class="rubik-section" id="overview"><div class="section-label">01 / OVERVIEW</div><h2>PROJECT OVERVIEW</h2><p>The assignment is to represent a 3×3 Rubik’s Cube in Java, implement its movements, and progress toward an automatic solving algorithm. It puts core Java programming concepts into practice.</p><div class="rubik-architecture"><div class="rubik-card-index">THE OBJECTIVE</div><p>Turn the rules of a physical cube into a structured program using arrays, methods, loops, and algorithms.</p></div><div class="rubik-skills"><span>Java 21</span><span>3D arrays</span><span>Loops</span><span>Methods</span><span>Algorithms</span></div></section>
-<section class="rubik-section" id="architecture"><div class="section-label">02 / ARCHITECTURE</div><h2>HOW THE CUBE IS REPRESENTED</h2><p>The cube is modeled using a three-dimensional Java array: six faces with 3 × 3 cells each. This structure makes it possible to manipulate each face.</p><div class="rubik-architecture"><div class="rubik-card-index">DATA MODEL / ASSIGNMENT</div><pre><code>int[][][] cube = new int[6][3][3];</code></pre><p>6 FACES × 3 ROWS × 3 COLUMNS</p><div aria-label="Simplified diagram of the six cube faces, each with nine cells" class="rubik-net" role="img"><div class="rubik-net-face rubik-net-up"><span>U</span></div><div class="rubik-net-face rubik-net-left"><span>L</span></div><div class="rubik-net-face rubik-net-front"><span>F</span></div><div class="rubik-net-face rubik-net-right"><span>R</span></div><div class="rubik-net-face rubik-net-back"><span>B</span></div><div class="rubik-net-face rubik-net-down"><span>D</span></div></div><p class="rubik-visual-caption">Schematic of the six faces — a data-model illustration, not a program screenshot.</p></div></section>
-<section class="rubik-section" id="implementation"><div class="section-label">03 / JAVA</div><h2>A GLIMPSE OF THE JAVA</h2><p>Two compact reference examples illustrate the planned approach. They will be replaced with my own verified implementation.</p><div class="rubik-grid"><article class="rubik-card"><div class="rubik-card-index">01 / CUBE INITIALIZATION</div><h3>Creating the cube</h3><div class="rubik-code-placeholder"><span class="rubik-code-label">RCPartie1.java · REFERENCE EXAMPLE</span><pre><code>int[][][] creerRubikCubeVierge() {
+</g></svg><p class="rubik-cover-note">CUBE GEOMETRY</p></div></div>
+<section class="rubik-section" id="overview"><div class="section-label">01 / OVERVIEW</div><h2>PROJECT OVERVIEW</h2><p>This university project explores how to represent a 3×3 Rubik’s Cube, implement its movements and study automatic solving. The published Java showcase includes cube-state operations, movement sequences and a bounded search for short solutions.</p><div class="rubik-architecture"><div class="rubik-card-index">THE OBJECTIVE</div><p>Turn the rules of a physical cube into a structured program using arrays, methods, loops, and algorithms.</p></div><div class="rubik-skills"><span>Java 21</span><span>Cube state</span><span>Loops</span><span>Methods</span><span>Algorithms</span></div></section>
+<section class="rubik-section" id="architecture"><div class="section-label">02 / ARCHITECTURE</div><h2>HOW THE CUBE IS REPRESENTED</h2><p>The assignment introduces a three-dimensional array with six 3 × 3 faces. The separate Java showcase on GitHub represents the same 54 stickers with a compact face-by-face structure.</p><div class="rubik-architecture"><div class="rubik-card-index">DATA MODEL / ASSIGNMENT</div><pre><code>int[][][] cube = new int[6][3][3];</code></pre><p>6 FACES × 3 ROWS × 3 COLUMNS</p><div aria-label="Simplified diagram of the six cube faces, each with nine cells" class="rubik-net" role="img"><div class="rubik-net-face rubik-net-up"><span>U</span></div><div class="rubik-net-face rubik-net-left"><span>L</span></div><div class="rubik-net-face rubik-net-front"><span>F</span></div><div class="rubik-net-face rubik-net-right"><span>R</span></div><div class="rubik-net-face rubik-net-back"><span>B</span></div><div class="rubik-net-face rubik-net-down"><span>D</span></div></div><p class="rubik-visual-caption">Schematic of the six faces — a data-model illustration, not a program screenshot.</p></div></section>
+<section class="rubik-section" id="implementation"><div class="section-label">03 / JAVA</div><h2>A GLIMPSE OF THE JAVA</h2><p>These examples illustrate the assignment’s matrix-based approach. The repository contains the separate Java showcase implementation.</p><div class="rubik-grid"><article class="rubik-card"><div class="rubik-card-index">01 / CUBE INITIALIZATION</div><h3>Creating the cube</h3><div class="rubik-code-placeholder"><span class="rubik-code-label">JAVA · MATRIX OPERATIONS</span><pre><code>int[][][] creerRubikCubeVierge() {
 
     int[][][] cube = new int[6][3][3];
 
@@ -189,7 +247,7 @@
 
     return cube;
 
-}</code></pre></div><p>Each face receives its own color index (0–5). Three loops traverse the faces, rows, and columns.</p></article><article class="rubik-card"><div class="rubik-card-index">02 / FACE ROTATION</div><h3>Clockwise rotation</h3><div class="rubik-code-placeholder"><span class="rubik-code-label">RCPartie1.java · REFERENCE EXAMPLE</span><pre><code>void pivoterFace(int[][] face) {
+}</code></pre></div><p>Each face receives its own color index (0–5). Three loops traverse the faces, rows, and columns.</p></article><article class="rubik-card"><div class="rubik-card-index">02 / FACE ROTATION</div><h3>Clockwise rotation</h3><div class="rubik-code-placeholder"><span class="rubik-code-label">JAVA · MATRIX OPERATIONS</span><pre><code>void pivoterFace(int[][] face) {
 
     int[][] copie = new int[3][3];
 
@@ -214,14 +272,17 @@
     }
 
 }</code></pre></div><p>A temporary copy prevents overwriting values during rotation. The index formula places each sticker in its new position.</p></article></div></section>
-<section class="rubik-section" id="demonstration"><div class="section-label">04 / DEMO</div><h2>APPLICATION DEMONSTRATION</h2><p>A preview of the features this project aims to demonstrate. These visuals are illustrative, not screenshots or verified program results.</p><div class="rubik-grid"><figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CONCEPT PREVIEW</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-mini-cube"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><strong>CUBE MODEL</strong></div><figcaption>Visual representation of the cube’s six faces</figcaption></figure>
-<figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CONCEPT PREVIEW</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-preview-moves"><b>R</b><span>→</span><b>U</b><span>→</span><b>F</b></div></div><strong>MOVEMENTS</strong></div><figcaption>Planned support for cube rotations</figcaption></figure>
-<figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CONCEPT PREVIEW</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-preview-result">cube[6][3][3]<br/>moves: R · U · F<br/><em>goal: solved state ✓</em></div></div><strong>SOLVING</strong></div><figcaption>Goal: verify a solved cube state</figcaption></figure></div></section>
-<section class="rubik-section" id="algorithms"><div class="section-label">05 / ALGORITHMS</div><h2>MOVEMENTS &amp; SOLVING</h2><p>The assignment has two stages: manipulate the cube and undo a recorded scramble, then solve it without knowing the previous moves.</p><div class="rubik-grid rubik-grid-two"><article class="rubik-card"><div class="rubik-card-index">PART 01 / RECORDED SCRAMBLE</div><h3>Reversing a scramble</h3><p>Part 1 includes reversing a recorded sequence of movements.</p></article><article class="rubik-card"><div class="rubik-card-index">PART 02 / AUTOMATIC SOLVING</div><h3>Solving without move history</h3><p>Part 2 aims to solve the cube without its scramble history. Results will be shown once implemented and verified.</p></article></div></section>
-<section class="rubik-section" id="learning"><div class="section-label">06 / REFLECTION</div><h2>PROJECT GOALS &amp; SKILLS</h2><p>The project brings together core Java concepts and an algorithmic challenge. The points below describe the assignment goals, not completed milestones.</p><div class="rubik-grid"><article class="rubik-card rubik-goal-card"><div class="rubik-card-index">01</div><h3>THE CHALLENGE</h3><p>Represent a physical puzzle as data and reproduce its movements accurately.</p></article>
+<section class="rubik-section" id="demonstration"><div class="section-label">04 / DEMO</div><h2>APPLICATION DEMONSTRATION</h2><p>Three perspectives on the same puzzle: its structure, its movement notation and its solved state.</p><div class="rubik-grid"><figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CUBE SYSTEM</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-mini-cube"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><strong>CUBE MODEL</strong></div><figcaption>Visual representation of the cube’s six faces</figcaption></figure>
+<figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CUBE SYSTEM</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-preview-moves"><b>R</b><span>→</span><b>U</b><span>→</span><b>F</b></div></div><strong>MOVEMENTS</strong></div><figcaption>The notation behind face rotations</figcaption></figure>
+<figure class="rubik-shot"><div class="rubik-shot-placeholder"><span class="rubik-preview-label">CUBE SYSTEM</span><div aria-hidden="true" class="rubik-preview-visual"><div class="rubik-preview-result">cube[6][3][3]<br/>moves: R · U · F<br/><em>goal: solved state ✓</em></div></div><strong>SOLVING</strong></div><figcaption>Recognising the solved state</figcaption></figure></div></section>
+<section class="rubik-section" id="cube-lab"><div class="section-label">04.1 / EXPLORER</div><h2>ROTATION LAB</h2><p>Manipulate a 3 × 3 matrix and see how a clockwise rotation rearranges its cells. This interactive demonstration explores the mathematics of a cube face.</p><div class="rubik-architecture"><div class="rubik-lab"><div class="rubik-lab-face" data-rubik-face aria-label="3 by 3 matrix"></div><div class="rubik-lab-controls"><button type="button" data-rubik-action="cw">↻ Rotate clockwise</button><button type="button" data-rubik-action="ccw">↺ Rotate counterclockwise</button><button type="button" data-rubik-action="reset">Reset</button><p class="rubik-lab-state" aria-live="polite">Initial matrix</p></div></div></div></section>
+<section class="rubik-section" id="playable-cube"><div class="section-label">04.2 / PLAY</div><h2>INTERACTIVE 3D CUBE</h2><p>Explore a real six-face cube in 3D. Drag to change your view, scramble it in four moves, and try to restore every face.</p><div class="play-cube" data-play-cube><div class="play-layout"><div class="cube3d-view"><div class="cube3d-stage" data-cube3d-stage aria-label="Draggable 3D cube"><div class="cube3d-object" data-cube3d-object><div class="cube3d-face" data-face="U" role="img" aria-label="U face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div><div class="cube3d-face" data-face="D" role="img" aria-label="D face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div><div class="cube3d-face" data-face="F" role="img" aria-label="F face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div><div class="cube3d-face" data-face="B" role="img" aria-label="B face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div><div class="cube3d-face" data-face="R" role="img" aria-label="R face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div><div class="cube3d-face" data-face="L" role="img" aria-label="L face"><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span><span class="play-sticker"></span></div></div></div><p class="cube3d-hint">Drag to orbit · use the buttons to turn faces</p><div class="cube3d-actions"><button type="button" data-view-reset>Reset view</button></div></div><div class="play-controls"><h3>INTERACTIVE CUBE</h3><p class="play-help">Drag the cube to look around. Use the face buttons to turn a layer; ′ turns it backwards.</p><div class="play-moves"><button type="button" data-play-action="U" aria-label="U clockwise">U</button><button type="button" data-play-action="U" data-inverse="true" aria-label="U counterclockwise">U′</button><button type="button" data-play-action="R" aria-label="R clockwise">R</button><button type="button" data-play-action="R" data-inverse="true" aria-label="R counterclockwise">R′</button><button type="button" data-play-action="F" aria-label="F clockwise">F</button><button type="button" data-play-action="F" data-inverse="true" aria-label="F counterclockwise">F′</button><button type="button" data-play-action="D" aria-label="D clockwise">D</button><button type="button" data-play-action="D" data-inverse="true" aria-label="D counterclockwise">D′</button><button type="button" data-play-action="L" aria-label="L clockwise">L</button><button type="button" data-play-action="L" data-inverse="true" aria-label="L counterclockwise">L′</button><button type="button" data-play-action="B" aria-label="B clockwise">B</button><button type="button" data-play-action="B" data-inverse="true" aria-label="B counterclockwise">B′</button></div><div class="play-actions"><button type="button" data-play-action="scramble">EASY SCRAMBLE · 4 MOVES</button><button type="button" data-play-action="undo">UNDO</button><button type="button" data-play-action="reset">RESET</button></div><p class="play-state" data-play-status aria-live="polite">Your turn!</p></div></div></div></section>
+<section class="rubik-section" id="algorithms"><div class="section-label">05 / ALGORITHMS</div><h2>MOVEMENTS &amp; SOLVING</h2><p>The project connects face rotations and movement sequences with the broader challenge of solving a cube from its current state.</p><div class="rubik-grid rubik-grid-two"><article class="rubik-card"><div class="rubik-card-index">PART 01 / RECORDED SCRAMBLE</div><h3>Reversing a scramble</h3><p>A recorded sequence can be reversed by reading its moves backwards and inverting each rotation.</p></article><article class="rubik-card"><div class="rubik-card-index">PART 02 / AUTOMATIC SOLVING</div><h3>Solving without move history</h3><p>The Java showcase searches the current cube state for solutions to short scrambles, without using the scramble history. The assignment also introduces a broader layer-by-layer solving strategy.</p></article></div></section>
+<section class="rubik-section" id="resolution-map"><div class="section-label">05.1 / PROGRESSION</div><h2>FROM MOVEMENT TO SOLUTION</h2><p>Three connected ideas: representing the cube, searching its current state and understanding the layer-by-layer method described in the assignment.</p><div class="rubik-grid"><article class="rubik-card"><div class="rubik-card-index">01 / FOUNDATIONS</div><h3>Represent and rotate</h3><p>Six faces, nine cells per face, row and column permutations, then R, L, U, D, F and B moves.</p></article><article class="rubik-card"><div class="rubik-card-index">02 / RESOLUTION</div><h3>Read the cube state</h3><p>The assignment outlines eight solving stages, from the first cross to the final corners. These stages provide the context for the solving problem.</p></article><article class="rubik-card"><div class="rubik-card-index">03 / EXTENSION</div><h3>Design a complete system</h3><p>Separate cube operations, solving logic and terminal interaction into readable Java components.</p></article></div></section>
+<section class="rubik-section" id="learning"><div class="section-label">06 / REFLECTION</div><h2>PROJECT GOALS &amp; SKILLS</h2><p>A progression from data representation to state transformations and algorithmic problem-solving.</p><div class="rubik-grid"><article class="rubik-card rubik-goal-card"><div class="rubik-card-index">01</div><h3>THE CHALLENGE</h3><p>Represent a physical puzzle as data and reproduce its movements accurately.</p></article>
 <article class="rubik-card rubik-goal-card"><div class="rubik-card-index">02</div><h3>THE APPROACH</h3><p>Organize the cube into six 3×3 faces and build reusable Java methods for transformations.</p></article>
-<article class="rubik-card rubik-goal-card"><div class="rubik-card-index">03</div><h3>THE NEXT STEP</h3><p>Connect movements to solving logic, then validate the program and document real results.</p></article></div></section>
-<section class="rubik-section" id="source"><div class="section-label">07 / SOURCE</div><h2>SOURCE CODE</h2><p>The source repository will be linked after the code is ready for public presentation.</p><!-- SOURCE URL: replace this disabled element with a real link when public. --><span aria-disabled="true" class="rubik-source">REPOSITORY LINK TO FOLLOW</span></section>
+<article class="rubik-card rubik-goal-card"><div class="rubik-card-index">03</div><h3>THE NEXT STEP</h3><p>Explore cube-state search and the layer-by-layer solving approach introduced in the assignment.</p></article></div></section>
+<section class="rubik-section" id="source"><div class="section-label">07 / SOURCE</div><h2>SOURCE CODE</h2><p>Explore the Rubik’s Cube Java source code, including cube operations, short-scramble search and the terminal interface.</p><a class="rubik-source" href="https://github.com/moiseh595-rg/rubiks-cube" target="_blank" rel="noopener noreferrer">VIEW RUBIK’S CUBE CODE ↗</a></section>
 <nav aria-label="Project navigation" class="project-nav"><a href="../work.html"><span class="nav-label">ALL PROJECTS</span><span class="nav-title">← WORK</span></a><a href="project-04.html"><span class="nav-label">NEXT PROJECT</span><span class="nav-title">THE ALCHEMIST’S LEGACY →</span></a></nav>
 </section>
 </main>
@@ -234,5 +295,107 @@
 </footer>
 <div aria-hidden="true" aria-label="Expanded project image" aria-modal="true" class="lightbox" id="lightbox" role="dialog"><button aria-label="Close image" class="lightbox-close" type="button">×</button><img alt="" decoding="async" id="lightbox-image" loading="lazy" src=""/></div>
 <script src="../js/main.js"></script>
-</body>
+<script id="rubik-lab-script">(()=>{const grid=document.querySelector('[data-rubik-face]');if(!grid)return;const initial=[1,2,3,4,5,6,7,8,9];let cells=[...initial],turns=0;const label=document.querySelector('.rubik-lab-state');function draw(){grid.replaceChildren(...cells.map(n=>{const el=document.createElement('span');el.textContent=n;return el}));label.textContent=turns===0?'Initial matrix':('Rotations: '+turns)}function rotate(clockwise){const old=[...cells];for(let i=0;i<3;i++)for(let j=0;j<3;j++)cells[i*3+j]=clockwise?old[(2-j)*3+i]:old[j*3+(2-i)];turns++}document.querySelectorAll('[data-rubik-action]').forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.rubikAction;if(a==='reset'){cells=[...initial];turns=0}else rotate(a==='cw');draw()}));draw()})();</script><script id="playable-cube-script">
+(() => {
+  const root = document.querySelector('[data-play-cube]');
+  if (!root) return;
+  const french = document.documentElement.lang === 'fr';
+  const faces = {
+    U: {n:[0,1,0], r:[1,0,0], d:[0,0,1], color:'#f0f0ed'},
+    D: {n:[0,-1,0],r:[1,0,0], d:[0,0,-1],color:'#f1d74e'},
+    F: {n:[0,0,1], r:[1,0,0], d:[0,-1,0],color:'#46b870'},
+    B: {n:[0,0,-1],r:[-1,0,0],d:[0,-1,0],color:'#548ee7'},
+    R: {n:[1,0,0], r:[0,0,-1],d:[0,-1,0],color:'#e95555'},
+    L: {n:[-1,0,0],r:[0,0,1], d:[0,-1,0],color:'#efa13e'}
+  };
+  const keys = Object.keys(faces);
+  const add = (a,b,k=1) => a.map((v,i)=>v+b[i]*k);
+  const key = (p,n) => `${p.join(',')}|${n.join(',')}`;
+  const start = () => {
+    const s = new Map();
+    for (const f of keys) {
+      const {n,r,d} = faces[f];
+      for(let row=0;row<3;row++) for(let col=0;col<3;col++) {
+        const p = add(add(n,r,col-1),d,row-1);
+        s.set(key(p,n),f);
+      }
+    }
+    return s;
+  };
+  let state = start(), history = [], moves = 0;
+  // Rotate a layer by a quarter-turn around its outward-facing normal.
+  const turn = (face, inverse=false) => {
+    const axis = faces[face].n;
+    const axisIndex = axis.findIndex(v=>v!==0);
+    const layer = axis[axisIndex];
+    const sign = (inverse ? 1 : -1) * layer;
+    const rotate = v => {
+      const [x,y,z]=v;
+      if(axisIndex===0) return [x,-sign*z,sign*y];
+      if(axisIndex===1) return [sign*z,y,-sign*x];
+      return [-sign*y,sign*x,z];
+    };
+    const next = new Map();
+    for(const [k,color] of state) {
+      const [p,n] = k.split('|').map(s=>s.split(',').map(Number));
+      const changed = p[axisIndex]===layer;
+      next.set(changed ? key(rotate(p),rotate(n)) : k,color);
+    }
+    state = next;
+  };
+  const solved = () => {
+    for(const f of keys) {
+      const {n,r,d}=faces[f];
+      for(let row=0;row<3;row++) for(let col=0;col<3;col++) {
+        if(state.get(key(add(add(n,r,col-1),d,row-1),n))!==f) return false;
+      }
+    }
+    return true;
+  };
+  const faceElements = {};
+  for(const f of keys) {
+    const el = root.querySelector(`[data-face="${f}"]`);
+    faceElements[f] = Array.from(el.querySelectorAll('.play-sticker'));
+  }
+  const status = root.querySelector('[data-play-status]');
+  const undo = root.querySelector('[data-play-action="undo"]');
+  const draw = () => {
+    for(const f of keys) {
+      const {n,r,d}=faces[f];
+      for(let row=0;row<3;row++) for(let col=0;col<3;col++) {
+        const p=add(add(n,r,col-1),d,row-1);
+        const color=state.get(key(p,n));
+        faceElements[f][row*3+col].style.backgroundColor=faces[color].color;
+      }
+    }
+    undo.disabled=history.length===0;
+    status.textContent=(solved() ? (french?'Cube résolu !':'Cube solved!') : (french?'À vous de jouer !':'Your turn!'))+' · '+moves+' '+(french?'coups':'moves');
+  };
+  root.addEventListener('click',event=>{
+    const button=event.target.closest('button[data-play-action]');
+    if(!button || !root.contains(button))return;
+    const action=button.dataset.playAction;
+    if(action==='reset') {state=start();history=[];moves=0;}
+    else if(action==='undo') {
+      const last=history.pop();
+      if(last) {turn(last.face,!last.inverse);moves=Math.max(0,moves-1);}
+    } else if(action==='scramble') {
+      state=start();history=[];moves=0;
+      let previous='';
+      const pool=keys;
+      for(let i=0;i<4;i++) {
+        const choices=pool.filter(f=>f!==previous);
+        const face=choices[Math.floor(Math.random()*choices.length)];
+        const inverse=Math.random()<.5;
+        turn(face,inverse);history.push({face,inverse});previous=face;
+      }
+    } else if(keys.includes(action)) {
+      const inverse=button.dataset.inverse==='true';
+      turn(action,inverse);history.push({face:action,inverse});moves++;
+    }
+    draw();
+  });
+  draw();
+})();
+</script><script id="rubik-3d-orbit">(()=>{const stage=document.querySelector('[data-cube3d-stage]'),cube=document.querySelector('[data-cube3d-object]');if(!stage||!cube)return;let x=-27,y=-35,active=false,lastX=0,lastY=0;const draw=()=>cube.style.transform=`rotateX(${x}deg) rotateY(${y}deg)`;stage.addEventListener('pointerdown',e=>{if(e.button!==0)return;active=true;lastX=e.clientX;lastY=e.clientY;stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',e=>{if(!active)return;y+=(e.clientX-lastX)*.55;x-=(e.clientY-lastY)*.55;x=Math.max(-85,Math.min(85,x));lastX=e.clientX;lastY=e.clientY;draw()});const stop=()=>active=false;stage.addEventListener('pointerup',stop);stage.addEventListener('pointercancel',stop);document.querySelector('[data-view-reset]')?.addEventListener('click',()=>{x=-27;y=-35;draw()});draw()})();</script></body>
 </html>
