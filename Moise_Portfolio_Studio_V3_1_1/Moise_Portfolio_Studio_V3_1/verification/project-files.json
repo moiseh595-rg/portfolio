@@ -1,0 +1,70 @@
+[
+  {
+    "source": "project html codes to keep/projects/project-01.html",
+    "installed": "projects/project-01.html",
+    "sha256": "dfddc6cfc9ed6f20c58bc7634f6669180efcce20c695f83b7d7831afb0ad31e2",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects/project-02.html",
+    "installed": "projects/project-02.html",
+    "sha256": "60a566a26e32dd5ba040f9fb75a4a72d3561035a0bfe9486547a185a07d09dd3",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects/project-03.html",
+    "installed": "projects/project-03.html",
+    "sha256": "4caf5f03eae5d4a244c25c5a4de8a80141083dba02806b8960d44d51d88f6938",
+    "identical": false,
+    "original_sha256": "61baaf520b48f63d0b25360f820fe2cc29597461815f8f6d67790e05819258fd",
+    "authorized_correction": "Move-counter singular/plural only"
+  },
+  {
+    "source": "project html codes to keep/projects/project-04.html",
+    "installed": "projects/project-04.html",
+    "sha256": "6d548581ba6e6c7d8bd35d0ce9dcfc9a08239c9e005788fc4de1749feefba694",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects/project-05.html",
+    "installed": "projects/project-05.html",
+    "sha256": "f20c5b287e504d014be43d0644011b7e442d249a2c1abf41289b6e2b561be41d",
+    "identical": false,
+    "original_sha256": "580498e2300b649d1213690d4399d2a79ec88a6887687c4ce38e4adfbf19004f",
+    "authorized_correction": "MONETA metadata only"
+  },
+  {
+    "source": "project html codes to keep/projects fr/project-01.html",
+    "installed": "fr/projects/project-01.html",
+    "sha256": "ba7710eddac348013d2765b781f7172a8fd09dfec42e252baf6bd7aee2ed8463",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects fr/project-02.html",
+    "installed": "fr/projects/project-02.html",
+    "sha256": "beca2d0b4e6131ec150ffef04b5e88b3306c8896f1af974c07341f582bb4e87f",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects fr/project-03.html",
+    "installed": "fr/projects/project-03.html",
+    "sha256": "29f6142b46792635f2cc7754c11b2bf902a92eb4b92ca04d5a1fc85b60d8e332",
+    "identical": false,
+    "original_sha256": "efaf9a55b13b43b7ceee005b02ff46b47fdb81a3feaf45647b64259450418ef4",
+    "authorized_correction": "Move-counter singular/plural only"
+  },
+  {
+    "source": "project html codes to keep/projects fr/project-04.html",
+    "installed": "fr/projects/project-04.html",
+    "sha256": "d27e9b83b416236a10c2d88af0b10eea1a40436efb87c6c32daf98a09f9655eb",
+    "identical": true
+  },
+  {
+    "source": "project html codes to keep/projects fr/project-05.html",
+    "installed": "fr/projects/project-05.html",
+    "sha256": "c6c81025cac369fba31e47fdec82159d261f13ebf2223df19777240b625cc2a3",
+    "identical": false,
+    "original_sha256": "83def59034f4a7533d9980d98755ae1912fff9b5f3f0330c744842c952485e50",
+    "authorized_correction": "MONETA metadata only"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "about.html",
+    "coming-soon.html",
+    "contact.html",
+    "cv.html",
+    "fr/about.html",
+    "fr/coming-soon.html",
+    "fr/contact.html",
+    "fr/cv.html",
+    "fr/index.html",
+    "fr/projects/project-01.html",
+    "fr/projects/project-02.html",
+    "fr/projects/project-03.html",
+    "fr/projects/project-04.html",
+    "fr/projects/project-05.html",
+    "fr/work.html",
+    "index.html",
+    "projects/project-01.html",
+    "projects/project-02.html",
+    "projects/project-03.html",
+    "projects/project-04.html",
+    "projects/project-05.html",
+    "work.html"
+  ],
+  "inlineScripts": 6,
+  "issues": []
+}

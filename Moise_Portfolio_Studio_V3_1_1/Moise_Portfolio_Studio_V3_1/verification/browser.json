@@ -1,0 +1,882 @@
+{
+  "responsive": [
+    {
+      "page": "about.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "about.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "about.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "about.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "coming-soon.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 320,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 320
+    },
+    {
+      "page": "coming-soon.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 390,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 390
+    },
+    {
+      "page": "coming-soon.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 768
+    },
+    {
+      "page": "coming-soon.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "contact.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 320,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 320
+    },
+    {
+      "page": "contact.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 390,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 390
+    },
+    {
+      "page": "contact.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 768
+    },
+    {
+      "page": "contact.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "cv.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "cv.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "cv.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 768
+    },
+    {
+      "page": "cv.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "fr/about.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/about.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/about.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/about.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/coming-soon.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 320,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 320
+    },
+    {
+      "page": "fr/coming-soon.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 390,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 390
+    },
+    {
+      "page": "fr/coming-soon.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 768
+    },
+    {
+      "page": "fr/coming-soon.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "fr/contact.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/contact.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 390,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 390
+    },
+    {
+      "page": "fr/contact.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 768
+    },
+    {
+      "page": "fr/contact.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "fr/cv.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/cv.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/cv.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 768
+    },
+    {
+      "page": "fr/cv.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1440,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1440
+    },
+    {
+      "page": "fr/index.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/index.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/index.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 768
+    },
+    {
+      "page": "fr/index.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/projects/project-01.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/projects/project-01.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/projects/project-01.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/projects/project-01.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/projects/project-02.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/projects/project-02.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/projects/project-02.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/projects/project-02.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/projects/project-04.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/projects/project-04.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/projects/project-04.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/projects/project-04.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/projects/project-05.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/projects/project-05.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/projects/project-05.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/projects/project-05.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "fr/work.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 305
+    },
+    {
+      "page": "fr/work.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 375
+    },
+    {
+      "page": "fr/work.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 753
+    },
+    {
+      "page": "fr/work.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "fr",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "index.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "index.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 768,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 768
+    },
+    {
+      "page": "index.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "projects/project-01.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "projects/project-01.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "projects/project-01.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "projects/project-01.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "projects/project-02.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "projects/project-02.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "projects/project-02.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "projects/project-02.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "projects/project-03.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "projects/project-03.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "projects/project-03.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "projects/project-03.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "projects/project-04.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "projects/project-04.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "projects/project-04.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "projects/project-04.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "projects/project-05.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "projects/project-05.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "projects/project-05.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "projects/project-05.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    },
+    {
+      "page": "work.html",
+      "width": 320,
+      "brokenImages": [],
+      "clientWidth": 305,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 305
+    },
+    {
+      "page": "work.html",
+      "width": 390,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 375
+    },
+    {
+      "page": "work.html",
+      "width": 768,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 753
+    },
+    {
+      "page": "work.html",
+      "width": 1440,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "h1": 1,
+      "lang": "en",
+      "scrollWidth": 1425
+    }
+  ],
+  "cube": [
+    {
+      "page": "projects/project-03.html",
+      "face": "U",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "face": "R",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "face": "F",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "face": "D",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "face": "L",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "face": "B",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "projects/project-03.html",
+      "scrambled": true,
+      "undone": true,
+      "reset": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "U",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "R",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "F",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "D",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "L",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "face": "B",
+      "changed": true,
+      "restored": true
+    },
+    {
+      "page": "fr/projects/project-03.html",
+      "scrambled": true,
+      "undone": true,
+      "reset": true
+    }
+  ]
+}

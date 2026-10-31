@@ -1,0 +1,91 @@
+[
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "en-US",
+      "fr-FR"
+    ],
+    "stored": {},
+    "redirect": null
+  },
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "fr-FR",
+      "en-US"
+    ],
+    "stored": {},
+    "redirect": "https://example.test/portfolio/fr/index.html?source=test#section"
+  },
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "de-DE"
+    ],
+    "stored": {},
+    "redirect": null
+  },
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "fr-FR"
+    ],
+    "stored": {
+      "portfolio-language": "en"
+    },
+    "redirect": null
+  },
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "en-US"
+    ],
+    "stored": {
+      "portfolio-language": "fr"
+    },
+    "redirect": "https://example.test/portfolio/fr/index.html?source=test#section"
+  },
+  {
+    "path": "/index.html",
+    "lang": "en",
+    "languages": [
+      "en-US"
+    ],
+    "stored": {
+      "moise-lang": "fr"
+    },
+    "redirect": "https://example.test/portfolio/fr/index.html?source=test#section"
+  },
+  {
+    "path": "/fr/index.html",
+    "lang": "fr",
+    "languages": [
+      "en-US"
+    ],
+    "stored": {},
+    "redirect": null
+  },
+  {
+    "path": "/projects/project-03.html",
+    "lang": "en",
+    "languages": [
+      "fr-FR"
+    ],
+    "stored": {},
+    "redirect": null
+  },
+  {
+    "path": "/fr/projects/project-03.html",
+    "lang": "fr",
+    "languages": [
+      "en-US"
+    ],
+    "stored": {},
+    "redirect": null
+  }
+]
