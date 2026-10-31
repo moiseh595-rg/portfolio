@@ -31,3 +31,18 @@ Each case study has an equivalent page in `fr/projects/`. The escape-game showca
 ## Publishing and maintenance
 
 Publish from the repository root with GitHub Pages. Keep the English and French project lists synchronized when adding projects. Check local links, responsive layouts, image alt text, and keyboard navigation after each update. Do not publish collaborators’ names without permission.
+
+## Premium update (Oct 2026)
+- New `css/premium.css` and `js/premium.js` (loaded last on every page; remove the two lines to undo).
+- New MONETA case study: `projects/project-05.html` and `fr/projects/project-05.html`, with demo screenshots in `images/projects/moneta/` (fictional data).
+- Projects reordered by impact: MONETA, Alchemist's Legacy, Rubik's Cube (now linked to its finished page), Linux, Chuck Norris. Nothing removed. `coming-soon.html` is kept but no longer linked.
+- MONETA is marked "in development, not yet published". After deploying, add the live link in project-05 (EN + FR) and change the badge.
+- Fonts: Inter still loads from Google Fonts; falls back to system fonts offline.
+
+## How to edit (handover)
+- **Project order & pager:** projects run 05 MONETA → 04 Alchemist → 03 Rubik's → 02 Linux → 01 Chuck Norris. The pager at the bottom of each `projects/project-0N.html` (and the `fr/` twin) links previous/next. To add a project: copy a project page in both languages, add a card to `work.html`/`fr/work.html`/`index.html`/`fr/index.html`, then update the `<nav class="pager">` of its neighbours.
+- **Language:** `js/lang.js`. Home pages follow the browser language on first visit; the EN/FR switch is remembered and keeps the equivalent page. Deep links are never redirected unless the visitor chose a language.
+- **Design:** `css/premium.css` (loaded last). Colors are variables at its top.
+- **Footer navigation** is on every page; update contact links there and in `contact.html`.
+- **Publish:** upload the folder contents to GitHub Pages (or any static host).
+- `coming-soon.html` is no longer linked; kept so nothing is deleted.

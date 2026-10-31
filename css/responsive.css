@@ -2,51 +2,64 @@
   .site-header {
     height: 68px;
   }
+
   .desktop-nav {
     display: none;
   }
+
   .menu-toggle {
     display: block;
   }
+
   .hero {
     min-height: auto;
     grid-template-columns: 1fr;
     gap: 3rem;
     padding-top: 5rem;
   }
+
   .hero-photo {
     justify-self: start;
     width: min(78vw, 360px);
   }
+
   .split {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
   .project-card-offset {
     max-width: 100%;
   }
+
   .project-bottom {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .site-footer {
     grid-template-columns: 1fr;
   }
+
   .footer-links {
     flex-wrap: wrap;
   }
+
   .copyright {
     grid-column: auto;
   }
 }
+
 @media (max-width: 480px) {
   .hero h1 {
     font-size: clamp(3.2rem, 16vw, 5rem);
   }
+
   .section {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+
   .section-label {
     margin-bottom: 2.5rem;
   }
@@ -56,12 +69,15 @@
   .project-gallery {
     grid-template-columns: 1fr;
   }
+
   .project-gallery .media-frame:first-child {
     grid-column: auto;
   }
+
   .project-nav {
     flex-direction: column;
   }
+
   .project-nav a {
     max-width: 100%;
   }
@@ -72,14 +88,17 @@
     padding-left: max(1.25rem, env(safe-area-inset-left));
     padding-right: max(1.25rem, env(safe-area-inset-right));
   }
+
   .mobile-menu {
     padding-top: max(1.5rem, env(safe-area-inset-top));
     padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
+
   .menu-toggle {
     min-width: 44px;
     min-height: 44px;
   }
+
   .menu-close {
     min-width: 44px;
     min-height: 44px;

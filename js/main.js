@@ -18,20 +18,54 @@ document
   .forEach((link) => {
     const href = link.getAttribute("href") || "";
     const target = href.split("/").pop();
-    if (target === pagePath || (pagePath === "" && target === "index.html")) {
+    if (target === pagePath || (pagePath.startsWith("project-") && target === "work.html") || (pagePath === "" && target === "index.html")) {
       link.setAttribute("aria-current", "page");
     }
   });
 
+let menuReturnFocus = null;
+let menuBackground = [];
 function setMenuState(open) {
   if (!mobileMenu || !menuToggle) return;
-  mobileMenu.classList.toggle("open", open);
-  mobileMenu.setAttribute("aria-hidden", String(!open));
-  menuToggle.setAttribute("aria-expanded", String(open));
-  const french = document.documentElement.lang === "fr";
-  menuToggle.setAttribute("aria-label", open ? (french ? "Fermer le menu" : "Close menu") : (french ? "Ouvrir le menu" : "Open menu"));
-  document.body.style.overflow = open ? "hidden" : "";
+  const wasOpen = mobileMenu.classList.contains('open');
+  if (open === wasOpen) return;
+  mobileMenu.classList.toggle('open', open);
+  mobileMenu.setAttribute('aria-hidden', String(!open));
+  menuToggle.setAttribute('aria-expanded', String(open));
+  const french = document.documentElement.lang === 'fr';
+  menuToggle.setAttribute('aria-label', open ? (french ? 'Fermer le menu' : 'Close menu') : (french ? 'Ouvrir le menu' : 'Open menu'));
+  if (open) {
+    menuReturnFocus = document.activeElement;
+    mobileMenu.setAttribute('role', 'dialog');
+    mobileMenu.setAttribute('aria-modal', 'true');
+    mobileMenu.setAttribute('aria-label', french ? 'Navigation principale' : 'Main navigation');
+    // Inert siblings at every ancestor level, even when the menu is inside the header.
+    menuBackground = [];
+    let branch = mobileMenu;
+    while (branch.parentElement && branch !== document.body) {
+      for (const sibling of branch.parentElement.children) {
+        if (sibling !== branch) { menuBackground.push([sibling, sibling.inert]); sibling.inert = true; }
+      }
+      branch = branch.parentElement;
+    }
+    document.body.style.overflow = 'hidden';
+    menuClose?.focus();
+  } else {
+    for (const [element, previous] of menuBackground) element.inert = previous;
+    menuBackground = [];
+    mobileMenu.removeAttribute('aria-modal');
+    document.body.style.overflow = '';
+    if (menuReturnFocus?.isConnected) menuReturnFocus.focus();
+  }
 }
+mobileMenu?.addEventListener('keydown', (event) => {
+  if (event.key !== 'Tab' || !mobileMenu.classList.contains('open')) return;
+  const items = [...mobileMenu.querySelectorAll('a[href],button:not([disabled])')].filter(el => el.getClientRects().length);
+  const first = items[0], last = items[items.length - 1];
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+});
+window.addEventListener('resize', () => { if (window.innerWidth > 800) setMenuState(false); });
 
 menuToggle?.addEventListener("click", () => {
   const isOpen = mobileMenu?.classList.contains("open");
@@ -49,19 +83,17 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const observer = new IntersectionObserver(
-  (entries) => {
+// Content stays visible if JavaScript or IntersectionObserver is unavailable.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-  },
-  { threshold: 0.12 },
-);
-
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach((element) => {
+    element.classList.add('reveal-ready'); observer.observe(element);
+  });
+}
 
 // Lightweight image lightbox for authentic project screenshots.
 const lightbox = document.querySelector("#lightbox");
@@ -120,14 +152,3 @@ document.querySelectorAll("[data-lang]").forEach((link) => {
 });
 
 
-// Remember an explicit language choice from either language switcher.
-// The preference is applied only when opening the main portfolio homepage.
-document.querySelectorAll('a[data-lang="en"], a[data-lang="fr"]').forEach((link) => {
-  link.addEventListener("click", () => {
-    try {
-      localStorage.setItem("portfolio-language", link.dataset.lang);
-    } catch (error) {
-      // Language links still work when browser storage is unavailable.
-    }
-  });
-});

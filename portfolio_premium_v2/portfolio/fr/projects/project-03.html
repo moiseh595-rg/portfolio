@@ -1,0 +1,1946 @@
+<!doctype html>
+
+<html lang="fr">
+  <head>
+    <script src="../../js/lang.js"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="#0B2545" name="theme-color" />
+    <meta
+      content="Projet Rubik’s Cube en Java : modélisation 3×3, rotations, séquences de mouvements, recherche de solutions courtes et démonstration 3D interactive."
+      name="description"
+    />
+    <title>Rubik’s Cube — Projet Java | Moise MUGISHA</title>
+    <link href="../../favicon/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link
+      href="../../favicon/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="../../favicon/favicon-16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      href="../../favicon/favicon.ico"
+      rel="alternate icon"
+      type="image/x-icon"
+    />
+    <link
+      href="../../favicon/favicon-180.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="../../favicon/manifest.json" rel="manifest" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+    <link href="../../css/animations.css" rel="stylesheet" />
+    <style>
+      /* PROJECT 03 ONLY: styles are scoped to avoid affecting other portfolio pages. */
+
+      .rubik-case {
+        --rubik-accent: #8795ff;
+        --rubik-line: rgba(135, 149, 255, 0.25);
+      }
+
+      .rubik-case .rubik-hero {
+        margin-top: 4rem;
+      }
+
+      .rubik-case .rubik-title {
+        font-size: clamp(3rem, 7vw, 7rem);
+        line-height: 1.02;
+        overflow-wrap: anywhere;
+      }
+
+      .rubik-case .rubik-subtitle {
+        font-size: clamp(1.15rem, 2.5vw, 2rem);
+        letter-spacing: 0.04em;
+        margin-top: 1rem;
+      }
+
+      .rubik-case .rubik-lead {
+        max-width: 780px;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-top: 1.5rem;
+      }
+
+      .rubik-case .rubik-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.6rem;
+      }
+
+      .rubik-case .rubik-tags span {
+        border: 1px solid var(--rubik-line);
+        padding: 0.55rem 0.8rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+      }
+
+      .rubik-case .rubik-status {
+        color: var(--rubik-accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        margin-top: 1.5rem;
+      }
+
+      .rubik-case .rubik-section {
+        margin-top: 7rem;
+      }
+
+      .rubik-case .rubik-section > h2 {
+        font-size: clamp(1.65rem, 3.5vw, 3rem);
+        line-height: 1.2;
+        margin: 0 0 1.4rem;
+      }
+
+      .rubik-case .rubik-section > p {
+        color: var(--muted);
+        max-width: 850px;
+        line-height: 1.8;
+      }
+
+      .rubik-case .rubik-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+        margin-top: 2.5rem;
+      }
+
+      .rubik-case .rubik-grid-two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .rubik-case .rubik-card {
+        border: 1px solid var(--rubik-line);
+        padding: 1.5rem;
+        min-width: 0;
+      }
+
+      .rubik-case .rubik-card-index {
+        color: var(--rubik-accent);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 1.3rem;
+      }
+
+      .rubik-case .rubik-card h3 {
+        font-size: 1.2rem;
+        margin: 0 0 1rem;
+      }
+
+      .rubik-case .rubik-card p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .rubik-case .rubik-code-placeholder {
+        background: #0b182a;
+        border: 1px solid var(--rubik-line);
+        padding: 1.1rem;
+        margin: 1.4rem 0;
+      }
+
+      .rubik-case .rubik-code-label {
+        color: var(--rubik-accent);
+        font-size: 0.7rem;
+      }
+
+      .rubik-case pre {
+        margin: 1rem 0 0;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        color: #dce4ff;
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+
+      .rubik-case .rubik-shot {
+        margin: 0;
+        min-width: 0;
+      }
+
+      .rubik-case .rubik-shot-placeholder {
+        aspect-ratio: 16/10;
+        border: 1px dashed var(--rubik-line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.7rem;
+        padding: 1rem;
+        background: rgba(135, 149, 255, 0.035);
+      }
+
+      .rubik-case .rubik-shot-placeholder > span {
+        color: var(--rubik-accent);
+        font-size: 2rem;
+      }
+
+      .rubik-case .rubik-shot-placeholder strong {
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+      }
+
+      .rubik-case .rubik-shot-placeholder small {
+        color: var(--muted);
+        font-size: 0.7rem;
+      }
+
+      .rubik-case figcaption {
+        margin-top: 0.8rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.5;
+      }
+
+      .rubik-case .rubik-hero-placeholder {
+        min-height: 340px;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        gap: 1rem;
+        border: 1px dashed var(--rubik-line);
+        background: radial-gradient(
+          circle at center,
+          rgba(135, 149, 255, 0.12),
+          transparent 65%
+        );
+        padding: 2rem;
+      }
+
+      .rubik-case .rubik-cube-mark {
+        font-size: clamp(5rem, 12vw, 9rem);
+        line-height: 1;
+        color: var(--rubik-accent);
+      }
+
+      .rubik-case .rubik-hero-placeholder p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .rubik-case .rubik-architecture {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border: 1px solid var(--rubik-line);
+      }
+
+      .rubik-case .rubik-architecture code {
+        color: var(--rubik-accent);
+      }
+
+      .rubik-case .rubik-source {
+        margin-top: 2rem;
+        display: inline-flex;
+        border: 1px solid var(--rubik-line);
+        padding: 1rem 1.3rem;
+        color: var(--muted);
+        text-decoration: none;
+        cursor: default;
+      }
+
+      @media (max-width: 850px) {
+        .rubik-case .rubik-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .rubik-case .rubik-hero-placeholder {
+          min-height: 260px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .rubik-case .rubik-grid,
+        .rubik-case .rubik-grid-two {
+          grid-template-columns: 1fr;
+        }
+        .rubik-case .rubik-section {
+          margin-top: 4.5rem;
+        }
+        .rubik-case .rubik-hero {
+          margin-top: 2.5rem;
+        }
+        .rubik-case .rubik-card {
+          padding: 1.2rem;
+        }
+      }
+
+      /* Portfolio illustration: compact cube net, no external assets needed. */
+      .rubik-case .rubik-net {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 74px));
+        grid-template-rows: repeat(3, 74px);
+        gap: 6px;
+        justify-content: center;
+        margin: 2rem auto 1rem;
+      }
+      .rubik-case .rubik-net-face {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: var(--face-color);
+        position: relative;
+      }
+      .rubik-case .rubik-net-face::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        background:
+          linear-gradient(
+            to right,
+            transparent calc(33.333% - 1px),
+            #0b2545 calc(33.333% - 1px),
+            #0b2545 calc(33.333% + 1px),
+            transparent calc(33.333% + 1px),
+            transparent calc(66.666% - 1px),
+            #0b2545 calc(66.666% - 1px),
+            #0b2545 calc(66.666% + 1px),
+            transparent calc(66.666% + 1px)
+          ),
+          linear-gradient(
+            to bottom,
+            transparent calc(33.333% - 1px),
+            #0b2545 calc(33.333% - 1px),
+            #0b2545 calc(33.333% + 1px),
+            transparent calc(33.333% + 1px),
+            transparent calc(66.666% - 1px),
+            #0b2545 calc(66.666% - 1px),
+            #0b2545 calc(66.666% + 1px),
+            transparent calc(66.666% + 1px)
+          );
+      }
+      .rubik-case .rubik-net-face span {
+        position: relative;
+        z-index: 1;
+        grid-column: 2;
+        grid-row: 2;
+        place-self: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #0b2545;
+      }
+      .rubik-case .rubik-net-up {
+        grid-column: 2;
+        grid-row: 1;
+        --face-color: #f1f2ef;
+      }
+      .rubik-case .rubik-net-left {
+        grid-column: 1;
+        grid-row: 2;
+        --face-color: #f0a43b;
+      }
+      .rubik-case .rubik-net-front {
+        grid-column: 2;
+        grid-row: 2;
+        --face-color: #4eb66a;
+      }
+      .rubik-case .rubik-net-right {
+        grid-column: 3;
+        grid-row: 2;
+        --face-color: #e95656;
+      }
+      .rubik-case .rubik-net-back {
+        grid-column: 4;
+        grid-row: 2;
+        --face-color: #5b94e9;
+      }
+      .rubik-case .rubik-net-down {
+        grid-column: 2;
+        grid-row: 3;
+        --face-color: #e8d756;
+      }
+      .rubik-case .rubik-visual-caption {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .rubik-case .rubik-skills {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .rubik-case .rubik-skills span {
+        padding: 0.45rem 0.7rem;
+        background: rgba(135, 149, 255, 0.09);
+        border: 1px solid var(--rubik-line);
+        font-size: 0.75rem;
+      }
+      .rubik-case .rubik-grid-two .rubik-card {
+        max-width: none;
+      }
+      @media (max-width: 430px) {
+        .rubik-case .rubik-net {
+          grid-template-columns: repeat(4, minmax(0, 56px));
+          grid-template-rows: repeat(3, 56px);
+          gap: 4px;
+        }
+      }
+
+      /* Portfolio-ready preview additions: scoped to Project 03. */
+      .rubik-case .rubik-hero-placeholder {
+        position: relative;
+        overflow: hidden;
+        min-height: 420px;
+        background:
+          radial-gradient(
+            ellipse at 50% 45%,
+            rgba(135, 149, 255, 0.19),
+            transparent 65%
+          ),
+          linear-gradient(135deg, #0b182a, #101d36);
+        border: 1px solid var(--rubik-line);
+      }
+      .rubik-case .rubik-hero-placeholder::after {
+        content: "JAVA 21  /  3 × 3  /  RUBIK'S CUBE";
+        position: absolute;
+        bottom: 1.2rem;
+        left: 1.5rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        color: #aeb9e7;
+      }
+      .rubik-case .rubik-cover {
+        width: min(390px, 82%);
+        height: auto;
+        filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.28));
+      }
+      .rubik-case .rubik-hero-placeholder .rubik-cover-note {
+        font-size: 0.68rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #bdc8f7;
+        margin: 0;
+      }
+      .rubik-case .rubik-shot-placeholder {
+        border-style: solid;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(145deg, #101c31, #172540);
+        padding: 1.2rem;
+      }
+      .rubik-case .rubik-shot-placeholder small {
+        color: #aeb9d9;
+      }
+      .rubik-case .rubik-preview-visual {
+        height: 70%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .rubik-case .rubik-mini-cube {
+        display: grid;
+        grid-template-columns: repeat(3, 22px);
+        gap: 3px;
+        transform: rotate(-8deg);
+      }
+      .rubik-case .rubik-mini-cube i {
+        width: 22px;
+        height: 22px;
+        border-radius: 2px;
+        background: #6c86d9;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .rubik-case .rubik-mini-cube i:nth-child(3n + 2) {
+        background: #c9d6ff;
+      }
+      .rubik-case .rubik-mini-cube i:nth-child(4n) {
+        background: #3e579c;
+      }
+      .rubik-case .rubik-preview-moves {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        color: #cdd8ff;
+        font-weight: 700;
+        font-size: 1.15rem;
+      }
+      .rubik-case .rubik-preview-moves b {
+        padding: 0.5rem 0.7rem;
+        border: 1px solid rgba(135, 149, 255, 0.4);
+        font-size: 1.1rem;
+      }
+      .rubik-case .rubik-preview-result {
+        font: 600 0.76rem/1.9 monospace;
+        color: #b9c7ee;
+        text-align: left;
+      }
+      .rubik-case .rubik-preview-result em {
+        color: #8be3bb;
+        font-style: normal;
+      }
+      .rubik-case .rubik-preview-label {
+        position: absolute;
+        top: 0.8rem;
+        left: 1rem;
+        color: #8f9cc7;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+      .rubik-case .rubik-goal-card {
+        background: rgba(135, 149, 255, 0.045);
+      }
+      .rubik-case .rubik-goal-card h3 {
+        font-size: 1rem;
+      }
+      .rubik-case .rubik-goal-card p {
+        font-size: 0.9rem;
+      }
+      .rubik-case .rubik-status {
+        display: inline-block;
+      }
+      @media (max-width: 600px) {
+        .rubik-case .rubik-hero-placeholder {
+          min-height: 300px;
+        }
+        .rubik-case .rubik-hero-placeholder::after {
+          font-size: 0.5rem;
+          left: 0.8rem;
+        }
+      }
+
+      /* Project 03 demonstration cards: stable heading and responsive composition. */
+      .rubik-case .rubik-shot-placeholder {
+        position: relative;
+        min-height: 220px;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.15rem;
+        overflow: hidden;
+      }
+      .rubik-case .rubik-shot-placeholder .rubik-preview-label {
+        position: static;
+        display: block;
+        max-width: 100%;
+        width: 100%;
+        font-size: clamp(0.57rem, 1vw, 0.72rem);
+        line-height: 1.5;
+        letter-spacing: 0.09em;
+        text-align: center;
+        overflow-wrap: anywhere;
+        flex: none;
+        color: #aeb9e7;
+      }
+      .rubik-case .rubik-shot-placeholder .rubik-preview-visual {
+        flex: 1 1 auto;
+        height: auto;
+        min-height: 90px;
+        width: 100%;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rubik-case .rubik-shot-placeholder strong {
+        display: block;
+        text-align: center;
+        line-height: 1.5;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        flex: none;
+      }
+      .rubik-case .rubik-shot-placeholder .rubik-preview-moves {
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: clamp(0.2rem, 0.8vw, 0.7rem);
+      }
+      .rubik-case .rubik-shot-placeholder .rubik-preview-moves b {
+        padding: 0.3rem 0.45rem;
+      }
+      .rubik-case .rubik-shot-placeholder .rubik-preview-result {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        font-size: clamp(0.65rem, 0.85vw, 0.76rem);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .rubik-case .rubik-shot-placeholder .rubik-preview-visual {
+          transition:
+            transform 0.25s ease,
+            filter 0.25s ease;
+        }
+        .rubik-case .rubik-shot:hover .rubik-preview-visual {
+          transform: translateY(-4px);
+          filter: brightness(1.12);
+        }
+        .rubik-case .rubik-shot:hover .rubik-mini-cube {
+          transform: rotate(0deg);
+        }
+        .rubik-case .rubik-mini-cube {
+          transition: transform 0.3s ease;
+        }
+      }
+      /* Playable six-face cube net. */
+      .rubik-case .play-cube {
+        border: 1px solid var(--rubik-line);
+        background: linear-gradient(135deg, #0b182a, #101e35);
+        padding: clamp(1rem, 3vw, 2rem);
+        margin-top: 2rem;
+        color: #e6ecff;
+      }
+      .rubik-case .play-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(210px, 270px);
+        gap: clamp(1rem, 3vw, 2.5rem);
+        align-items: center;
+      }
+      .rubik-case .play-net {
+        --tile: clamp(11px, 2.05vw, 24px);
+        --gap: 3px;
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        grid-template-rows: repeat(3, max-content);
+        gap: clamp(3px, 0.65vw, 8px);
+        justify-content: center;
+        min-width: 0;
+      }
+      .rubik-case .play-face {
+        display: grid;
+        grid-template-columns: repeat(3, var(--tile));
+        grid-template-rows: repeat(3, var(--tile));
+        gap: var(--gap);
+        padding: 4px;
+        border-radius: 5px;
+        background: #07111e;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        position: relative;
+      }
+      .rubik-case .play-face[data-face="U"] {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .rubik-case .play-face[data-face="L"] {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .rubik-case .play-face[data-face="F"] {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      .rubik-case .play-face[data-face="R"] {
+        grid-column: 3;
+        grid-row: 2;
+      }
+      .rubik-case .play-face[data-face="B"] {
+        grid-column: 4;
+        grid-row: 2;
+      }
+      .rubik-case .play-face[data-face="D"] {
+        grid-column: 2;
+        grid-row: 3;
+      }
+      .rubik-case .play-sticker {
+        display: block;
+        border-radius: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
+      }
+      .rubik-case .play-face-name {
+        position: absolute;
+        top: -0.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.52rem;
+        letter-spacing: 0.04em;
+        color: #bbc6e9;
+        pointer-events: none;
+      }
+      .rubik-case .play-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 0;
+      }
+      .rubik-case .play-controls h3 {
+        margin: 0;
+        font-size: 1.05rem;
+        color: #f1f4ff;
+      }
+      .rubik-case .play-controls p {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        color: #b9c7e5;
+      }
+      .rubik-case .play-moves {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+      .rubik-case .play-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+      .rubik-case .play-controls button {
+        background: rgba(135, 149, 255, 0.07);
+        color: #eef2ff;
+        border: 1px solid rgba(135, 149, 255, 0.42);
+        border-radius: 5px;
+        min-height: 42px;
+        padding: 0.6rem 0.35rem;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 0.82rem;
+        line-height: 1.2;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      .rubik-case .play-controls button:hover,
+      .rubik-case .play-controls button:focus-visible {
+        background: rgba(135, 149, 255, 0.3);
+        border-color: #b6c0ff;
+        outline-offset: 3px;
+      }
+      .rubik-case .play-controls button:disabled {
+        opacity: 0.42;
+        cursor: not-allowed;
+      }
+      .rubik-case .play-controls button[data-play-action="scramble"] {
+        background: #8795ff;
+        color: #0b2545;
+      }
+      .rubik-case .play-state {
+        min-height: 2.4em;
+        color: #a9f2c8 !important;
+        font-weight: 600;
+      }
+      .rubik-case .play-help {
+        font-size: 0.76rem !important;
+      }
+      @media (max-width: 900px) {
+        .rubik-case .play-layout {
+          grid-template-columns: 1fr;
+        }
+        .rubik-case .play-net {
+          --tile: clamp(13px, 4vw, 27px);
+        }
+        .rubik-case .play-controls {
+          max-width: 480px;
+          width: 100%;
+          margin: 0 auto;
+        }
+      }
+      @media (max-width: 420px) {
+        .rubik-case .play-net {
+          --tile: clamp(10px, 3.3vw, 14px);
+          --gap: 2px;
+          gap: 3px;
+        }
+        .rubik-case .play-face {
+          padding: 3px;
+        }
+        .rubik-case .play-controls button {
+          min-height: 40px;
+        }
+      }
+    </style>
+    <style id="rubik-lab-style">
+      .rubik-lab {
+        display: flex;
+        align-items: center;
+        gap: clamp(1.5rem, 5vw, 4rem);
+        flex-wrap: wrap;
+      }
+      .rubik-lab-face {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(46px, 76px));
+        gap: 7px;
+      }
+      .rubik-lab-face span {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 1;
+        background: #8795ff;
+        color: #0b2545;
+        font-weight: 800;
+        border-radius: 7px;
+        font-size: 1.3rem;
+        border: 2px solid #0b2545;
+      }
+      .rubik-lab-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+        min-width: 190px;
+      }
+      .rubik-lab-controls button {
+        background: transparent;
+        color: inherit;
+        border: 1px solid currentColor;
+        padding: 12px 15px;
+        border-radius: 6px;
+        text-align: left;
+        font: inherit;
+        cursor: pointer;
+      }
+      .rubik-lab-controls button:hover,
+      .rubik-lab-controls button:focus-visible {
+        background: #8795ff;
+        color: #0b2545;
+      }
+      .rubik-lab-state {
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+    </style>
+    <style id="rubik-3d-style">
+      /* Demonstration cards: centred independently of other site grids. */
+      .rubik-case #demonstration > .rubik-grid {
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(12px, 2vw, 24px);
+        justify-items: stretch;
+        align-items: stretch;
+      }
+      .rubik-case #demonstration .rubik-shot {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+      }
+      .rubik-case #demonstration .rubik-shot-placeholder {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        flex: 1;
+      }
+      .rubik-case #demonstration .rubik-shot figcaption {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+      @media (max-width: 850px) {
+        .rubik-case #demonstration > .rubik-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .rubik-case #demonstration > .rubik-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 18px;
+        }
+      }
+      /* Six genuine 3x3 faces rendered as a single 3D cube. */
+      .rubik-case .play-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(210px, 280px);
+      }
+      .rubik-case .cube3d-stage {
+        width: 100%;
+        min-width: 0;
+        min-height: 330px;
+        display: grid;
+        place-items: center;
+        perspective: 850px;
+        touch-action: none;
+        cursor: grab;
+        user-select: none;
+        overflow: hidden;
+        border-radius: 8px;
+        background: radial-gradient(
+          circle,
+          rgba(135, 149, 255, 0.1),
+          transparent 66%
+        );
+      }
+      .rubik-case .cube3d-stage:active {
+        cursor: grabbing;
+      }
+      .rubik-case .cube3d-object {
+        --cube-size: 180px;
+        position: relative;
+        width: var(--cube-size);
+        height: var(--cube-size);
+        transform-style: preserve-3d;
+        transform: rotateX(-27deg) rotateY(-35deg);
+        transition: transform 0.16s ease-out;
+        pointer-events: none;
+      }
+      .rubik-case .cube3d-face {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        padding: 6px;
+        box-sizing: border-box;
+        background: #08101d;
+        border: 2px solid #070d18;
+        border-radius: 6px;
+        backface-visibility: visible;
+        pointer-events: auto;
+      }
+      .rubik-case .cube3d-face[data-face="F"] {
+        transform: translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face[data-face="B"] {
+        transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face[data-face="R"] {
+        transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face[data-face="L"] {
+        transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face[data-face="U"] {
+        transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face[data-face="D"] {
+        transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+      }
+      .rubik-case .cube3d-face .play-sticker {
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow:
+          inset 0 2px 3px rgba(255, 255, 255, 0.18),
+          inset 0 -2px 3px rgba(0, 0, 0, 0.1);
+      }
+      .rubik-case .cube3d-hint {
+        text-align: center;
+        color: #bac8e8;
+        font-size: 0.78rem;
+        margin: 0.5rem 0 0;
+      }
+      .rubik-case .cube3d-actions {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .rubik-case .cube3d-actions button {
+        font: inherit;
+        font-size: 0.75rem;
+        padding: 9px 12px;
+        background: transparent;
+        border: 1px solid rgba(135, 149, 255, 0.45);
+        border-radius: 5px;
+        color: #eaf0ff;
+        cursor: pointer;
+      }
+      .rubik-case .cube3d-actions button:hover {
+        background: rgba(135, 149, 255, 0.18);
+      }
+      @media (max-width: 760px) {
+        .rubik-case .play-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .rubik-case .cube3d-stage {
+          min-height: 285px;
+        }
+        .rubik-case .cube3d-object {
+          --cube-size: 160px;
+        }
+      }
+      @media (max-width: 380px) {
+        .rubik-case .cube3d-object {
+          --cube-size: 145px;
+        }
+        .rubik-case .cube3d-stage {
+          min-height: 255px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rubik-case .cube3d-object {
+          transition: none;
+        }
+      }
+    </style>
+    <link href="../../css/premium.css" rel="stylesheet" />
+  </head>
+  <body data-language="fr">
+    <header class="site-header" id="site-header">
+      <a aria-label="Moise — Home" class="logo" href="../index.html"
+        ><img
+          alt=""
+          src="../../favicon/favicon.svg"
+          style="width: 32px; height: 32px; display: block"
+      /></a>
+      <nav aria-label="Navigation principale" class="desktop-nav">
+        <a href="../work.html">PROJETS</a><a href="../about.html">À PROPOS</a
+        ><a href="../cv.html">CV</a><a href="../contact.html">CONTACT</a>
+      </nav>
+      <div
+        align="center"
+        aria-label="Language selection"
+        class="language-switcher"
+      >
+        <a data-lang="en" href="../../projects/project-03.html" lang="en">EN</a
+        ><span aria-hidden="true">/</span
+        ><a data-lang="fr" href="project-03.html" lang="fr">FR</a>
+      </div>
+      <button
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu"
+        class="menu-toggle"
+        type="button"
+      >
+        ☰
+      </button>
+    </header>
+    <div aria-hidden="true" class="mobile-menu" id="mobile-menu">
+      <button aria-label="Fermer le menu" class="menu-close" type="button">
+        ×
+      </button>
+      <nav aria-label="Navigation mobile">
+        <a href="../work.html">PROJETS</a><a href="../about.html">À PROPOS</a
+        ><a href="../cv.html">CV</a><a href="../contact.html">CONTACT</a>
+      </nav>
+      <div aria-label="Language selection" class="mobile-language">
+        <span>LANGUE</span
+        ><a data-lang="en" href="../../projects/project-03.html" lang="en">EN</a
+        ><a data-lang="fr" href="project-03.html" lang="fr">FR</a>
+      </div>
+    </div>
+    <main class="rubik-case">
+      <section class="section">
+        <a class="text-link" href="../work.html">← RETOUR AUX PROJETS</a>
+        <div class="rubik-hero">
+          <div class="section-label">03 / DÉVELOPPEMENT JAVA · 2026</div>
+          <h1 class="hero-subtitle rubik-title">RUBIK’S CUBE</h1>
+          <h2 class="rubik-subtitle">SIMULATEUR ET RÉSOLUTION</h2>
+          <p class="rubik-lead">
+            Un projet Rubik’s Cube associant modélisation en Java, rotations,
+            séquences de mouvements et recherche de solutions à partir de l’état
+            du cube, avec une démonstration 3D interactive.
+          </p>
+          <div class="rubik-tags">
+            <span>JAVA 21</span><span>ALGORITHMES</span><span>MODÈLE 3×3</span
+            ><span>3×3 RUBIK’S CUBE</span>
+          </div>
+          <p class="rubik-status">● JAVA · MODÉLISATION · ALGORITHMES</p>
+        </div>
+
+        <div class="media-frame" style="margin-top: 4rem">
+          <div class="rubik-hero-placeholder">
+            <svg
+              aria-label="Illustration of a three-dimensional Rubik's Cube"
+              class="rubik-cover"
+              role="img"
+              viewbox="0 0 440 320"
+            >
+              <defs>
+                <lineargradient id="cubeTop" x1="0" x2="1" y1="0" y2="1">
+                  <stop stop-color="#b8c6ff"></stop>
+                  <stop offset="1" stop-color="#7589de"></stop>
+                </lineargradient>
+                <lineargradient id="cubeLeft" x1="0" x2="0" y1="0" y2="1">
+                  <stop stop-color="#748ee6"></stop>
+                  <stop offset="1" stop-color="#304b96"></stop>
+                </lineargradient>
+                <lineargradient id="cubeRight" x1="0" x2="1" y1="0" y2="1">
+                  <stop stop-color="#3e60b4"></stop>
+                  <stop offset="1" stop-color="#182f68"></stop>
+                </lineargradient>
+              </defs>
+              <g stroke="#0b1830" stroke-linejoin="round" stroke-width="4">
+                <polygon
+                  fill="url(#cubeTop)"
+                  points="220,22 352,90 220,160 88,90"
+                ></polygon>
+                <polygon
+                  fill="url(#cubeLeft)"
+                  points="88,90 220,160 220,300 88,228"
+                ></polygon>
+                <polygon
+                  fill="url(#cubeRight)"
+                  points="220,160 352,90 352,228 220,300"
+                ></polygon>
+                <path
+                  d="M176 45L308 114M132 68L264 137M264 45L132 114M308 68L176 137"
+                  fill="none"
+                  stroke="#17284c"
+                  stroke-width="3"
+                ></path>
+                <path
+                  d="M88 136L220 207M88 182L220 254M132 114V252M176 137V276"
+                  fill="none"
+                  stroke="#17284c"
+                  stroke-width="3"
+                ></path>
+                <path
+                  d="M220 207L352 136M220 254L352 182M264 137V276M308 114V252"
+                  fill="none"
+                  stroke="#17284c"
+                  stroke-width="3"
+                ></path>
+              </g>
+            </svg>
+            <p class="rubik-cover-note">
+              Illustration conceptuelle · pas une capture du programme
+            </p>
+          </div>
+        </div>
+        <section class="rubik-section" id="overview">
+          <div class="section-label">01 / PRÉSENTATION</div>
+          <h2>PRÉSENTATION DU PROJET</h2>
+          <p>
+            Ce projet universitaire explore la représentation d’un Rubik’s Cube
+            3×3, la programmation de ses mouvements et la résolution
+            automatique. La version Java publiée comprend les opérations sur le
+            cube, les séquences de mouvements et une recherche limitée de
+            solutions courtes.
+          </p>
+          <div class="rubik-architecture">
+            <div class="rubik-card-index">L’OBJECTIF</div>
+            <p>
+              Traduire les règles d’un cube physique dans un programme
+              structuré, en utilisant des tableaux, des méthodes, des boucles et
+              des algorithmes pour représenter et modifier son état.
+            </p>
+          </div>
+          <div class="rubik-skills">
+            <span>Java 21</span><span>État du cube</span><span>Boucles</span
+            ><span>Méthodes</span><span>Algorithmes</span>
+          </div>
+        </section>
+        <section class="rubik-section" id="architecture">
+          <div class="section-label">02 / ARCHITECTURE</div>
+          <h2>COMMENT LE CUBE EST REPRÉSENTÉ</h2>
+          <p>
+            Le sujet présente un tableau à trois dimensions composé de six faces
+            de 3 × 3 cases. La version Java indépendante publiée sur GitHub
+            représente les mêmes 54 cases dans une structure compacte, face par
+            face.
+          </p>
+          <div class="rubik-architecture">
+            <div class="rubik-card-index">MODÈLE DE DONNÉES / SUJET</div>
+            <pre><code>int[][][] cube = new int[6][3][3];</code></pre>
+            <p>6 FACES × 3 LIGNES × 3 COLONNES</p>
+            <div
+              aria-label="Schéma simplifié des six faces du cube, chacune composée de neuf cases"
+              class="rubik-net"
+              role="img"
+            >
+              <div class="rubik-net-face rubik-net-up"><span>U</span></div>
+              <div class="rubik-net-face rubik-net-left"><span>L</span></div>
+              <div class="rubik-net-face rubik-net-front"><span>F</span></div>
+              <div class="rubik-net-face rubik-net-right"><span>R</span></div>
+              <div class="rubik-net-face rubik-net-back"><span>B</span></div>
+              <div class="rubik-net-face rubik-net-down"><span>D</span></div>
+            </div>
+            <p class="rubik-visual-caption">
+              Vue schématique des six faces — illustration du modèle de données,
+              et non capture du programme.
+            </p>
+          </div>
+        </section>
+        <section class="rubik-section" id="implementation">
+          <div class="section-label">03 / JAVA</div>
+          <h2>UN APERÇU DU JAVA</h2>
+          <p>
+            Ces exemples illustrent l’approche matricielle du sujet. Le dépôt
+            GitHub contient l’implémentation Java indépendante du projet.
+          </p>
+          <div class="rubik-grid">
+            <article class="rubik-card">
+              <div class="rubik-card-index">01 / INITIALISATION DU CUBE</div>
+              <h3>Création du cube</h3>
+              <div class="rubik-code-placeholder">
+                <span class="rubik-code-label">JAVA · MATRIX OPERATIONS</span>
+                <pre><code>int[][][] creerRubikCubeVierge() {
+
+    int[][][] cube = new int[6][3][3];
+
+    for (int face = 0; face &lt; 6; face++) {
+
+        for (int ligne = 0; ligne &lt; 3; ligne++) {
+
+            for (int colonne = 0; colonne &lt; 3; colonne++) {
+
+                cube[face][ligne][colonne] = face;
+
+            }
+
+        }
+
+    }
+
+    return cube;
+
+}</code></pre>
+              </div>
+              <p>
+                Chaque face reçoit sa propre couleur (indice 0 à 5). Trois
+                boucles parcourent les faces, les lignes et les colonnes.
+              </p>
+            </article>
+            <article class="rubik-card">
+              <div class="rubik-card-index">02 / ROTATION D’UNE FACE</div>
+              <h3>Rotation horaire</h3>
+              <div class="rubik-code-placeholder">
+                <span class="rubik-code-label">JAVA · MATRIX OPERATIONS</span>
+                <pre><code>void pivoterFace(int[][] face) {
+
+    int[][] copie = new int[3][3];
+
+    for (int i = 0; i &lt; 3; i++) {
+
+        for (int j = 0; j &lt; 3; j++) {
+
+            copie[i][j] = face[i][j];
+
+        }
+
+    }
+
+    for (int i = 0; i &lt; 3; i++) {
+
+        for (int j = 0; j &lt; 3; j++) {
+
+            face[i][j] = copie[2 - j][i];
+
+        }
+
+    }
+
+}</code></pre>
+              </div>
+              <p>
+                Une copie évite d’écraser les valeurs pendant le quart de tour.
+                La formule replace chaque case dans sa nouvelle position.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="rubik-section" id="demonstration">
+          <div class="section-label">04 / DEMO</div>
+          <h2>DÉMONSTRATION DE L’APPLICATION</h2>
+          <p>
+            Trois perspectives sur un même casse-tête : sa structure, ses
+            mouvements et son état résolu.
+          </p>
+          <div class="rubik-grid">
+            <figure class="rubik-shot">
+              <div class="rubik-shot-placeholder">
+                <span class="rubik-preview-label">SYSTÈME DU CUBE</span>
+                <div aria-hidden="true" class="rubik-preview-visual">
+                  <div class="rubik-mini-cube">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                    ><i></i>
+                  </div>
+                </div>
+                <strong>MODÈLE DU CUBE</strong>
+              </div>
+              <figcaption>Représentation visuelle des six faces</figcaption>
+            </figure>
+            <figure class="rubik-shot">
+              <div class="rubik-shot-placeholder">
+                <span class="rubik-preview-label">SYSTÈME DU CUBE</span>
+                <div aria-hidden="true" class="rubik-preview-visual">
+                  <div class="rubik-preview-moves">
+                    <b>R</b><span>→</span><b>U</b><span>→</span><b>F</b>
+                  </div>
+                </div>
+                <strong>MOUVEMENTS</strong>
+              </div>
+              <figcaption>La notation des rotations de faces</figcaption>
+            </figure>
+            <figure class="rubik-shot">
+              <div class="rubik-shot-placeholder">
+                <span class="rubik-preview-label">SYSTÈME DU CUBE</span>
+                <div aria-hidden="true" class="rubik-preview-visual">
+                  <div class="rubik-preview-result">
+                    cube[6][3][3]<br />moves: R · U · F<br /><em
+                      >goal: solved state ✓</em
+                    >
+                  </div>
+                </div>
+                <strong>RÉSOLUTION</strong>
+              </div>
+              <figcaption>Reconnaître un cube résolu</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="rubik-section" id="cube-lab">
+          <div class="section-label">04.1 / EXPLORATION</div>
+          <h2>LABORATOIRE DES ROTATIONS</h2>
+          <p>
+            Manipulez une matrice 3 × 3 et observez comment une rotation déplace
+            les cases. Cette démonstration interactive illustre les règles
+            mathématiques du cube.
+          </p>
+          <div class="rubik-architecture">
+            <div class="rubik-lab">
+              <div
+                class="rubik-lab-face"
+                data-rubik-face
+                aria-label="3 by 3 matrix"
+              ></div>
+              <div class="rubik-lab-controls">
+                <button type="button" data-rubik-action="cw">
+                  ↻ Tourner à droite</button
+                ><button type="button" data-rubik-action="ccw">
+                  ↺ Tourner à gauche</button
+                ><button type="button" data-rubik-action="reset">
+                  Réinitialiser
+                </button>
+                <p class="rubik-lab-state" aria-live="polite">
+                  Matrice initiale
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="rubik-section" id="playable-cube">
+          <div class="section-label">04.2 / JEU</div>
+          <h2>CUBE 3D INTERACTIF</h2>
+          <p>
+            Faites tourner le cube dans l’espace, mélangez-le en quatre
+            mouvements et essayez de retrouver ses six faces unies.
+          </p>
+          <div class="play-cube" data-play-cube>
+            <div class="play-layout">
+              <div class="cube3d-view">
+                <div
+                  class="cube3d-stage"
+                  data-cube3d-stage
+                  aria-label="Cube 3D manipulable"
+                >
+                  <div class="cube3d-object" data-cube3d-object>
+                    <div
+                      class="cube3d-face"
+                      data-face="U"
+                      role="img"
+                      aria-label="U face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                    <div
+                      class="cube3d-face"
+                      data-face="D"
+                      role="img"
+                      aria-label="D face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                    <div
+                      class="cube3d-face"
+                      data-face="F"
+                      role="img"
+                      aria-label="F face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                    <div
+                      class="cube3d-face"
+                      data-face="B"
+                      role="img"
+                      aria-label="B face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                    <div
+                      class="cube3d-face"
+                      data-face="R"
+                      role="img"
+                      aria-label="R face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                    <div
+                      class="cube3d-face"
+                      data-face="L"
+                      role="img"
+                      aria-label="L face"
+                    >
+                      <span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span
+                      ><span class="play-sticker"></span>
+                    </div>
+                  </div>
+                </div>
+                <p class="cube3d-hint">
+                  Glissez pour faire pivoter la vue · utilisez les boutons pour
+                  tourner les faces
+                </p>
+                <div class="cube3d-actions">
+                  <button type="button" data-view-reset>Vue initiale</button>
+                </div>
+              </div>
+              <div class="play-controls">
+                <h3>CUBE INTERACTIF</h3>
+                <p class="play-help">
+                  Appuyez sur une face pour la tourner dans le sens horaire. Le
+                  symbole prime (′) indique le sens inverse.
+                </p>
+                <div class="play-moves">
+                  <button
+                    type="button"
+                    data-play-action="U"
+                    aria-label="U clockwise"
+                  >
+                    U</button
+                  ><button
+                    type="button"
+                    data-play-action="U"
+                    data-inverse="true"
+                    aria-label="U counterclockwise"
+                  >
+                    U′</button
+                  ><button
+                    type="button"
+                    data-play-action="R"
+                    aria-label="R clockwise"
+                  >
+                    R</button
+                  ><button
+                    type="button"
+                    data-play-action="R"
+                    data-inverse="true"
+                    aria-label="R counterclockwise"
+                  >
+                    R′</button
+                  ><button
+                    type="button"
+                    data-play-action="F"
+                    aria-label="F clockwise"
+                  >
+                    F</button
+                  ><button
+                    type="button"
+                    data-play-action="F"
+                    data-inverse="true"
+                    aria-label="F counterclockwise"
+                  >
+                    F′</button
+                  ><button
+                    type="button"
+                    data-play-action="D"
+                    aria-label="D clockwise"
+                  >
+                    D</button
+                  ><button
+                    type="button"
+                    data-play-action="D"
+                    data-inverse="true"
+                    aria-label="D counterclockwise"
+                  >
+                    D′</button
+                  ><button
+                    type="button"
+                    data-play-action="L"
+                    aria-label="L clockwise"
+                  >
+                    L</button
+                  ><button
+                    type="button"
+                    data-play-action="L"
+                    data-inverse="true"
+                    aria-label="L counterclockwise"
+                  >
+                    L′</button
+                  ><button
+                    type="button"
+                    data-play-action="B"
+                    aria-label="B clockwise"
+                  >
+                    B</button
+                  ><button
+                    type="button"
+                    data-play-action="B"
+                    data-inverse="true"
+                    aria-label="B counterclockwise"
+                  >
+                    B′
+                  </button>
+                </div>
+                <div class="play-actions">
+                  <button type="button" data-play-action="scramble">
+                    MÉLANGER · 4 COUPS</button
+                  ><button type="button" data-play-action="undo">ANNULER</button
+                  ><button type="button" data-play-action="reset">
+                    RÉINITIALISER
+                  </button>
+                </div>
+                <p class="play-state" data-play-status aria-live="polite">
+                  À vous de jouer !
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="rubik-section" id="algorithms">
+          <div class="section-label">05 / ALGORITHMES</div>
+          <h2>MOUVEMENTS ET RÉSOLUTION</h2>
+          <p>
+            Le projet relie les rotations, les séquences de mouvements et le
+            problème de la résolution à partir de l’état actuel du cube.
+          </p>
+          <div class="rubik-grid rubik-grid-two">
+            <article class="rubik-card">
+              <div class="rubik-card-index">PARTIE 01 / MÉMORISATION</div>
+              <h3>Inverser le mélange</h3>
+              <p>
+                Une séquence enregistrée peut être inversée en parcourant les
+                mouvements dans l’ordre inverse et en inversant chaque rotation.
+              </p>
+            </article>
+            <article class="rubik-card">
+              <div class="rubik-card-index">
+                PARTIE 02 / RÉSOLUTION AUTOMATIQUE
+              </div>
+              <h3>Résoudre sans historique</h3>
+              <p>
+                La version Java publiée recherche des solutions pour de courts
+                mélanges à partir de l’état actuel du cube, sans utiliser
+                l’historique. Le sujet présente également une stratégie de
+                résolution plus générale, couche par couche.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="rubik-section" id="resolution-map">
+          <div class="section-label">05.1 / PROGRESSION</div>
+          <h2>DU MOUVEMENT À LA RÉSOLUTION</h2>
+          <p>
+            Trois idées complémentaires : représenter le cube, rechercher une
+            solution à partir de son état et comprendre la méthode de résolution
+            par couches présentée dans le sujet.
+          </p>
+          <div class="rubik-grid">
+            <article class="rubik-card">
+              <div class="rubik-card-index">01 / FONDATIONS</div>
+              <h3>Représenter et tourner</h3>
+              <p>
+                Six faces, neuf cases par face, permutations de lignes et de
+                colonnes, puis mouvements R, L, U, D, F et B.
+              </p>
+            </article>
+            <article class="rubik-card">
+              <div class="rubik-card-index">02 / RÉSOLUTION</div>
+              <h3>Lire l’état du cube</h3>
+              <p>
+                Le sujet décrit huit étapes de résolution, de la première croix
+                jusqu’aux derniers coins. Elles donnent le cadre du problème
+                algorithmique.
+              </p>
+            </article>
+            <article class="rubik-card">
+              <div class="rubik-card-index">03 / EXTENSION</div>
+              <h3>Concevoir un système complet</h3>
+              <p>
+                Séparer les opérations sur le cube, la logique de recherche et
+                l’interaction en terminal dans des composants Java lisibles.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="rubik-section" id="learning">
+          <div class="section-label">06 / BILAN</div>
+          <h2>OBJECTIFS ET COMPÉTENCES</h2>
+          <p>
+            Une progression de la représentation des données vers les
+            transformations d’état et la résolution algorithmique.
+          </p>
+          <div class="rubik-grid">
+            <article class="rubik-card rubik-goal-card">
+              <div class="rubik-card-index">01</div>
+              <h3>LE DÉFI</h3>
+              <p>
+                Représenter un casse-tête physique avec des données et
+                reproduire fidèlement ses mouvements.
+              </p>
+            </article>
+            <article class="rubik-card rubik-goal-card">
+              <div class="rubik-card-index">02</div>
+              <h3>L’APPROCHE</h3>
+              <p>
+                Organiser le cube en six faces de 3×3 et créer des méthodes Java
+                réutilisables pour les transformations.
+              </p>
+            </article>
+            <article class="rubik-card rubik-goal-card">
+              <div class="rubik-card-index">03</div>
+              <h3>LA SUITE</h3>
+              <p>
+                Explorer la recherche à partir de l’état du cube et la méthode
+                de résolution par couches présentée dans le sujet.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="rubik-section" id="source">
+          <div class="section-label">07 / SOURCE</div>
+          <h2>CODE SOURCE</h2>
+          <p>
+            Consultez le code Java du Rubik’s Cube : opérations sur le cube,
+            recherche de solutions courtes et interface en terminal.
+          </p>
+          <a
+            class="rubik-source"
+            href="https://github.com/moiseh595-rg/rubiks-cube"
+            target="_blank"
+            rel="noopener noreferrer"
+            >VOIR LE CODE RUBIK’S CUBE ↗</a
+          >
+        </section>
+      </section>
+      <nav class="pager" aria-label="Navigation entre les projets">
+        <div class="pager-dots">
+          <span>PROJETS</span
+          ><a
+            href="project-05.html"
+            aria-label="MONETA — une application de finances personnelles"
+            >1</a
+          ><a href="project-04.html" aria-label="L’Héritage de l’Alchimiste"
+            >2</a
+          ><a
+            href="project-03.html"
+            aria-label="Rubik’s Cube — Java"
+            aria-current="page"
+            >3</a
+          ><a
+            href="project-02.html"
+            aria-label="Linux — Installation et gestion du système"
+            >4</a
+          ><a href="project-01.html" aria-label="Site Chuck Norris">5</a>
+        </div>
+        <div class="pager-row">
+          <a class="pager-card prev" href="project-04.html" rel="prev"
+            ><small>← PROJET PRÉCÉDENT</small
+            ><b>L’Héritage de l’Alchimiste</b></a
+          ><a class="pager-card next" href="project-02.html" rel="next"
+            ><small>PROJET SUIVANT →</small
+            ><b>Linux — Installation et gestion du système</b></a
+          >
+        </div>
+        <a class="text-link pager-back" href="../work.html"
+          >← TOUS LES PROJETS</a
+        >
+      </nav>
+    </main>
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="../index.html">MOISE.</a>
+        <p>Étudiant en informatique &amp; développeur</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navigation du pied de page">
+        <a href="../work.html">PROJETS</a><a href="../about.html">À PROPOS</a
+        ><a href="../cv.html">CV</a><a href="../contact.html">CONTACT</a
+        ><a href="mailto:mugishamoise808@gmail.com">EMAIL</a
+        ><a
+          href="https://github.com/moiseh595-rg"
+          target="_blank"
+          rel="noopener"
+          >GITHUB</a
+        ><a
+          href="https://www.linkedin.com/in/mugisha-moise/"
+          target="_blank"
+          rel="noopener"
+          >LINKEDIN</a
+        >
+      </nav>
+      <p>© 2026 MUGISHA MOISE</p>
+    </footer>
+    <div
+      aria-hidden="true"
+      aria-label="Image du projet agrandie"
+      aria-modal="true"
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+    >
+      <button aria-label="Fermer l’image" class="lightbox-close" type="button">
+        ×</button
+      ><img alt="" decoding="async" id="lightbox-image" loading="lazy" src="" />
+    </div>
+    <script src="../../js/main.js"></script>
+    <script id="rubik-lab-script">
+      (() => {
+        const grid = document.querySelector("[data-rubik-face]");
+        if (!grid) return;
+        const initial = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let cells = [...initial],
+          turns = 0;
+        const label = document.querySelector(".rubik-lab-state");
+        function draw() {
+          grid.replaceChildren(
+            ...cells.map((n) => {
+              const el = document.createElement("span");
+              el.textContent = n;
+              return el;
+            }),
+          );
+          label.textContent =
+            turns === 0 ? "Matrice initiale" : "Rotations : " + turns;
+        }
+        function rotate(clockwise) {
+          const old = [...cells];
+          for (let i = 0; i < 3; i++)
+            for (let j = 0; j < 3; j++)
+              cells[i * 3 + j] = clockwise
+                ? old[(2 - j) * 3 + i]
+                : old[j * 3 + (2 - i)];
+          turns++;
+        }
+        document.querySelectorAll("[data-rubik-action]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            const a = btn.dataset.rubikAction;
+            if (a === "reset") {
+              cells = [...initial];
+              turns = 0;
+            } else rotate(a === "cw");
+            draw();
+          }),
+        );
+        draw();
+      })();
+    </script>
+    <script id="playable-cube-script">
+      (() => {
+        const root = document.querySelector("[data-play-cube]");
+        if (!root) return;
+        const french = document.documentElement.lang === "fr";
+        const faces = {
+          U: { n: [0, 1, 0], r: [1, 0, 0], d: [0, 0, 1], color: "#f0f0ed" },
+          D: { n: [0, -1, 0], r: [1, 0, 0], d: [0, 0, -1], color: "#f1d74e" },
+          F: { n: [0, 0, 1], r: [1, 0, 0], d: [0, -1, 0], color: "#46b870" },
+          B: { n: [0, 0, -1], r: [-1, 0, 0], d: [0, -1, 0], color: "#548ee7" },
+          R: { n: [1, 0, 0], r: [0, 0, -1], d: [0, -1, 0], color: "#e95555" },
+          L: { n: [-1, 0, 0], r: [0, 0, 1], d: [0, -1, 0], color: "#efa13e" },
+        };
+        const keys = Object.keys(faces);
+        const add = (a, b, k = 1) => a.map((v, i) => v + b[i] * k);
+        const key = (p, n) => `${p.join(",")}|${n.join(",")}`;
+        const start = () => {
+          const s = new Map();
+          for (const f of keys) {
+            const { n, r, d } = faces[f];
+            for (let row = 0; row < 3; row++)
+              for (let col = 0; col < 3; col++) {
+                const p = add(add(n, r, col - 1), d, row - 1);
+                s.set(key(p, n), f);
+              }
+          }
+          return s;
+        };
+        let state = start(),
+          history = [],
+          moves = 0;
+        // Rotate a layer by a quarter-turn around its outward-facing normal.
+        const turn = (face, inverse = false) => {
+          const axis = faces[face].n;
+          const axisIndex = axis.findIndex((v) => v !== 0);
+          const layer = axis[axisIndex];
+          const sign = (inverse ? 1 : -1) * layer;
+          const rotate = (v) => {
+            const [x, y, z] = v;
+            if (axisIndex === 0) return [x, -sign * z, sign * y];
+            if (axisIndex === 1) return [sign * z, y, -sign * x];
+            return [-sign * y, sign * x, z];
+          };
+          const next = new Map();
+          for (const [k, color] of state) {
+            const [p, n] = k.split("|").map((s) => s.split(",").map(Number));
+            const changed = p[axisIndex] === layer;
+            next.set(changed ? key(rotate(p), rotate(n)) : k, color);
+          }
+          state = next;
+        };
+        const solved = () => {
+          for (const f of keys) {
+            const { n, r, d } = faces[f];
+            for (let row = 0; row < 3; row++)
+              for (let col = 0; col < 3; col++) {
+                if (
+                  state.get(key(add(add(n, r, col - 1), d, row - 1), n)) !== f
+                )
+                  return false;
+              }
+          }
+          return true;
+        };
+        const faceElements = {};
+        for (const f of keys) {
+          const el = root.querySelector(`[data-face="${f}"]`);
+          faceElements[f] = Array.from(el.querySelectorAll(".play-sticker"));
+        }
+        const status = root.querySelector("[data-play-status]");
+        const undo = root.querySelector('[data-play-action="undo"]');
+        const draw = () => {
+          for (const f of keys) {
+            const { n, r, d } = faces[f];
+            for (let row = 0; row < 3; row++)
+              for (let col = 0; col < 3; col++) {
+                const p = add(add(n, r, col - 1), d, row - 1);
+                const color = state.get(key(p, n));
+                faceElements[f][row * 3 + col].style.backgroundColor =
+                  faces[color].color;
+              }
+          }
+          undo.disabled = history.length === 0;
+          status.textContent =
+            (solved()
+              ? french
+                ? "Cube résolu !"
+                : "Cube solved!"
+              : french
+                ? "À vous de jouer !"
+                : "Your turn!") +
+            " · " +
+            moves +
+            " " +
+            (french ? "coups" : "moves");
+        };
+        root.addEventListener("click", (event) => {
+          const button = event.target.closest("button[data-play-action]");
+          if (!button || !root.contains(button)) return;
+          const action = button.dataset.playAction;
+          if (action === "reset") {
+            state = start();
+            history = [];
+            moves = 0;
+          } else if (action === "undo") {
+            const last = history.pop();
+            if (last) {
+              turn(last.face, !last.inverse);
+              moves = Math.max(0, moves - 1);
+            }
+          } else if (action === "scramble") {
+            state = start();
+            history = [];
+            moves = 0;
+            let previous = "";
+            const pool = keys;
+            for (let i = 0; i < 4; i++) {
+              const choices = pool.filter((f) => f !== previous);
+              const face = choices[Math.floor(Math.random() * choices.length)];
+              const inverse = Math.random() < 0.5;
+              turn(face, inverse);
+              history.push({ face, inverse });
+              previous = face;
+            }
+          } else if (keys.includes(action)) {
+            const inverse = button.dataset.inverse === "true";
+            turn(action, inverse);
+            history.push({ face: action, inverse });
+            moves++;
+          }
+          draw();
+        });
+        draw();
+      })();
+    </script>
+    <script id="rubik-3d-orbit">
+      (() => {
+        const stage = document.querySelector("[data-cube3d-stage]"),
+          cube = document.querySelector("[data-cube3d-object]");
+        if (!stage || !cube) return;
+        let x = -27,
+          y = -35,
+          active = false,
+          lastX = 0,
+          lastY = 0;
+        const draw = () =>
+          (cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`);
+        stage.addEventListener("pointerdown", (e) => {
+          if (e.button !== 0) return;
+          active = true;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          stage.setPointerCapture(e.pointerId);
+        });
+        stage.addEventListener("pointermove", (e) => {
+          if (!active) return;
+          y += (e.clientX - lastX) * 0.55;
+          x -= (e.clientY - lastY) * 0.55;
+          x = Math.max(-85, Math.min(85, x));
+          lastX = e.clientX;
+          lastY = e.clientY;
+          draw();
+        });
+        const stop = () => (active = false);
+        stage.addEventListener("pointerup", stop);
+        stage.addEventListener("pointercancel", stop);
+        document
+          .querySelector("[data-view-reset]")
+          ?.addEventListener("click", () => {
+            x = -27;
+            y = -35;
+            draw();
+          });
+        draw();
+      })();
+    </script>
+    <script src="../../js/premium.js" defer></script>
+  </body>
+</html>
